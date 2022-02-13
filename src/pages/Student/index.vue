@@ -5,7 +5,7 @@
 <script>
 import { mapState,mapGetters } from "vuex";
 export default {
-  name: "",
+  name: "Student",
   data() {
     return {
       searchParams:{

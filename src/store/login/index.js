@@ -40,6 +40,7 @@ const actions = {
     async userLogin({ commit }, data) {
         console.log(data);
         let result = await reqUserLogin(data);
+        console.log(result);
         if (result.status == 1) {
             //用户已经登录成功且获取到token
             commit("USERLOGIN", result.token);

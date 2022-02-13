@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 import Home from '@/pages/Home'
 import Search from '@/pages/Search'
 import Login from '@/pages/Login'
+import Student from '@/pages/Student'
 
 //解决重复访问路由地址报错
 let originalPush = VueRouter.prototype.push;
@@ -40,6 +41,11 @@ export default new VueRouter({
         {
             path: "/login",
             component: Login,
+        }
+        ,
+        {
+            path: "/student",
+            component: Student,
         }
         ,
         //重定向

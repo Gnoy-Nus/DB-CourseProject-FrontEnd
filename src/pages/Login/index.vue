@@ -5,8 +5,8 @@
         <!-- 教师登录页面 -->
         <div class="register-box hidden">
           <h1>login</h1>
-          <input type="text" placeholder="工号" v-model="tea_id"/>
-          <input type="password" placeholder="密码" v-model="tea_pwd"/>
+          <input type="text" placeholder="工号" v-model="tea_id" />
+          <input type="password" placeholder="密码" v-model="tea_pwd" />
           <button>登录</button>
         </div>
         <!-- 学生登录页面 -->
@@ -20,7 +20,7 @@
       <div class="con-box left">
         <h2>教师<span>登录界面</span></h2>
         <p>快来挑选你的<span>学生</span>吧</p>
-        <img src="./img/logo_shu.png" alt="" zoom="66%"/>
+        <img src="./img/logo_shu.png" alt="" zoom="66%" />
         <p>不是老师？</p>
         <button @click="LoginS">我是学生</button>
       </div>
@@ -29,7 +29,7 @@
         <p>快来选择你的<span>导师</span>吧</p>
         <img src="./img/logo_shu.png" alt="" />
         <p>不是学生？</p>
-        <button  @click="LoginT">我是老师</button>
+        <button @click="LoginT">我是老师</button>
       </div>
     </div>
   </div>
@@ -39,26 +39,26 @@
 export default {
   data() {
     return {
-      stu_id:"",
-      stu_pwd:"",
-      tea_id:"",
-      tea_pwd:""
+      stu_id: "",
+      stu_pwd: "",
+      tea_id: "",
+      tea_pwd: "",
     };
   },
   methods: {
     //换成学生的登录页面切换
     LoginS() {
-      var login_box=document.getElementsByClassName("login-box")[0];
-      var form_box= document.getElementsByClassName("form-box")[0];
-      var register_box= document.getElementsByClassName("register-box")[0];
+      var login_box = document.getElementsByClassName("login-box")[0];
+      var form_box = document.getElementsByClassName("form-box")[0];
+      var register_box = document.getElementsByClassName("register-box")[0];
       form_box.style.transform = "translateX(0%)";
       register_box.classList.add("hidden");
       login_box.classList.remove("hidden");
     },
     LoginT() {
-      var login_box=document.getElementsByClassName("login-box")[0];
-      var form_box= document.getElementsByClassName("form-box")[0];
-      var register_box= document.getElementsByClassName("register-box")[0];
+      var login_box = document.getElementsByClassName("login-box")[0];
+      var form_box = document.getElementsByClassName("form-box")[0];
+      var register_box = document.getElementsByClassName("register-box")[0];
       form_box.style.transform = "translateX(80%)";
       login_box.classList.add("hidden");
       register_box.classList.remove("hidden");
@@ -68,9 +68,15 @@ export default {
       try {
         //登录成功
         const { stu_id, stu_pwd } = this;
-        stu_id&&stu_pwd&&(await this.$store.dispatch("userLogin", { usr:stu_id, pwd:stu_pwd ,type:"s" }));
-         let toPath = "/student";
-         this.$router.push(toPath);
+        stu_id &&
+          stu_pwd &&
+          (await this.$store.dispatch("userLogin", {
+            usr: stu_id,
+            pwd: stu_pwd,
+            type: "s",
+          }));
+        let toPath = "/student";
+        this.$router.push(toPath);
       } catch (error) {
         alert(error.message);
       }
@@ -80,9 +86,15 @@ export default {
       try {
         //登录成功
         const { tea_id, tea_pwd } = this;
-        tea_id&&tea_pwd&&(await this.$store.dispatch("userLogin", { usr:stu_id, pwd:stu_pwd ,type:"t" }));
-         let toPath = "/teacher";
-         this.$router.push(toPath);
+        tea_id &&
+          tea_pwd &&
+          (await this.$store.dispatch("userLogin", {
+            usr: stu_id,
+            pwd: stu_pwd,
+            type: "t",
+          }));
+        let toPath = "/teacher";
+        this.$router.push(toPath);
       } catch (error) {
         alert(error.message);
       }
@@ -92,7 +104,7 @@ export default {
 </script>
 
 <style >
-  /* 全局样式 */
+/* 全局样式 */
 * {
   margin: 0;
   padding: 0;
