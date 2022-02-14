@@ -56,6 +56,7 @@ const actions = {
         let result = await reqStuInfo();
         if (result.status == 1) {
             commit("STU_INFO", result.data);
+            console.log(result);
             return 'ok';
         } else {
             return Promise.reject(new Error('faile'));
