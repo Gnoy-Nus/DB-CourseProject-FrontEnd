@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
+//导入fa|jquery库
+import 'font-awesome/css/font-awesome.min.css'
+import 'jquery/dist/jquery.slim'
+import 'jquery/dist/jquery'
+
 //注册全局组件
 import Header from '@/components/Header'
 Vue.component(Header.name,Header);

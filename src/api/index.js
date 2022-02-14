@@ -1,4 +1,5 @@
 //对API进行统一管理
+
 import requests from './request';  //此处requests等于axios
 
 let weatherQueryURL = 'http://wthrcdn.etouch.cn/weather_mini?city='
@@ -28,11 +29,10 @@ export const reqUserLogin = (params) => {
 }
 
 //获取学生用户信息
-export const reqStuInfo = (params) => {
+export const reqStuInfo = () => {
   return requests({
     method: 'get',
     url: `/student/info`,
-    data: params
   });
 }
 

@@ -1,182 +1,68 @@
 <template>
-  <!-- 静态页面的body内容 -->
-  <div>
-    <div class="search_form">
-      <router-link class="logo" to="/Home"
-        ><img src="./img/logo.png" alt="logo"
-      /></router-link>
-      <div class="form_group">
-        <input
-          type="text"
-          class="input_txt"
-          placeholder="请输入查询的天气"
-          v-model="keyword"
-          @keyup.enter="goSearch"
-        />
-        <button class="input_sub" @click="goSearch">搜 索</button>
-      </div>
-      <div class="hotkey">
-        <a
-          href="javascript:void(0);"
-          v-for="item in hotCitys"
-          @click="keySearch(item)"
-          >{{ item }}</a
+  <header class="main-header">
+      <h1>test main header</h1>
+      <!-- Logo 
+      <a href="#" @click="" class="logo">
+        <span class="logo-mini"> </span>
+        <span
+          class="logo-lg"
+          style="font-size: 14px"
+          datahtmllocale="integrativecsssuniversity"
+          >上海大学本硕博一体化选课系统</span
         >
-      </div>
-    </div>
-  </div>
+      </a> -->
+
+      <!-- Navbar -->
+      <!-- 
+      <nav class="navbar navbar-static-top">      
+        <div class="navbar-custom-menu">
+          <input
+            id="h_language"
+            name="h_language"
+            type="hidden"
+            value="zh_CN"
+          />
+          <ul class="nav navbar-nav">
+            <a href="/Login/Logout"
+              ><i class="fa fa-power-off"></i
+              ><span class="nav-function-text"
+                >&emsp;<span datahtmllocale="logout">安全退出</span></span
+              ></a
+            >
+          </ul>
+        </div>
+      </nav> -->
+    </header>
 </template>
 
 <script>
 export default {
-  name: "Header",
-  data() {
-    return {
-      keyword: "",
-      hotCitys: ["北京", "上海", "广州", "深圳"],
-    };
-  },
-  methods: {
-    keySearch(kw) {
-      if (this.$route.query) {
-        let loction = {
-          name: "search",
-          params: { keyword: kw || undefined },
-        };
-        loction.query = this.$route.query;
-        this.$router.push(loction);
-      }
-    },
-
-    goSearch() {
-      if (this.$route.query) {
-        let loction = {
-          name: "search",
-          params: { keyword: this.keyword || undefined },
-        };
-        loction.query = this.$route.query;
-        this.$router.push(loction);
-      }
-    },
-  },
-};
+  name:"Header"
+}
 </script>
 
-<style scope>
-body {
-  font-family: "Microsoft YaHei";
-}
-.wrap {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-}
-.search_form {
-  width: 640px;
-  margin: 100px auto 0;
-}
-.logo img {
-  display: block;
-  margin: 0 auto;
-}
-.form_group {
-  width: 640px;
-  height: 40px;
-  margin-top: 45px;
-}
-.input_txt {
-  width: 538px;
-  height: 38px;
-  padding: 0px;
-  float: left;
-  border: 1px solid #41a1cb;
-  outline: none;
-  text-indent: 10px;
-}
-
-.input_sub {
-  width: 100px;
-  height: 40px;
-  border: 0px;
-  float: left;
-  background-color: #41a1cb;
-  color: #fff;
-  font-size: 16px;
-  outline: none;
-  cursor: pointer;
+<style scoped>
+.wrapper {
+  margin: 0;
+  padding: 0;
+  /* 100%窗口高度 */
+  height: 100vh;
+  /* 渐变背景 */
+  /*background: linear-gradient(200deg, #f3e8e7, #ebffe3);*/
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /*字体：白色 */
+  color: white;
 }
-.input_sub.loading::before {
-  content: "";
-  position: absolute;
-  left: 0;
+
+.main-header {
   top: 0;
-  width: 100%;
-  height: 100%;
-  background: url("./img/loading.gif");
-}
-
-.hotkey {
-  margin: 3px 0 0 2px;
-}
-
-.hotkey a {
-  font-size: 14px;
-  color: #666;
-  padding-right: 15px;
-}
-.weather_list {
-  height: 200px;
-  text-align: center;
-  margin-top: 50px;
-  font-size: 0px;
-}
-.weather_list li {
-  display: inline-block;
-  width: 140px;
-  height: 200px;
-  padding: 0 10px;
-  overflow: hidden;
+  left: 0;
+  right: 0;
+  background-color: #08acee;
   position: relative;
-  background: url("./img/line.png") right center no-repeat;
-  background-size: 1px 130px;
-}
-
-.weather_list li:last-child {
-  background: none;
-}
-
-.info_date {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  color: #999;
-  font-size: 14px;
-  left: 0px;
-  bottom: 0px;
-  margin-top: 15px;
-}
-.info_date b {
-  float: left;
-  margin-left: 15px;
-}
-
-.info_type span {
-  color: #fda252;
-  font-size: 30px;
-  line-height: 80px;
-}
-.info_temp {
-  font-size: 14px;
-  color: #fda252;
-}
-.info_temp b {
-  font-size: 13px;
-}
-.tem .iconfont {
-  font-size: 50px;
+  max-height: 100px;
+  z-index: 3;
 }
 </style>

@@ -52,11 +52,10 @@ const actions = {
         }
     },
     //获取用户信息
-    async getUserInfo({ commit }) {
+    async getStuInfo({ commit }) {
         let result = await reqStuInfo();
-        if (result.code == 200) {
-            //提交用户信息
-            commit("USER_INFO", result.data);
+        if (result.status == 1) {
+            commit("STU_INFO", result.data);
             return 'ok';
         } else {
             return Promise.reject(new Error('faile'));
@@ -79,6 +78,9 @@ const actions = {
 
 //getters:提供给组件计算好的数据
 const getters = {
+    StuInfo(state) {
+        return state.stuInfo || {};
+    }
 };
 
 export default {
