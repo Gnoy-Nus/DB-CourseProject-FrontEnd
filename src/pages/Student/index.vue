@@ -11,10 +11,10 @@
             style="padding: 1px 0px 0px 2px"
           >
             <span style="font-weight: bold"> 学生信息</span>
-            <div style="line-height: 23px">学号：19120001</div>
+            <div style="line-height: 23px">学号：{{ StuInfo.id }}</div>
             <div style="line-height: 23px">姓名：{{ StuInfo.name }}</div>
-            <div style="line-height: 23px">性别：{{ StuInfo.gender }}</div>
-            <div style="line-height: 23px">出生日期：{{ StuInfo.birth }}</div>
+            <div style="line-height: 23px">学院：{{ StuInfo.college }}</div>
+            <div style="line-height: 23px">专业：{{ StuInfo.major }}</div>
             <div style="color: Red; font-weight: bold; line-height: 23px">
               完成操作后请点击&nbsp;<a href="/Logout" style="color: Red"
                 >[安全退出]</a

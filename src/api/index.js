@@ -36,6 +36,34 @@ export const reqStuInfo = () => {
   });
 }
 
+//修改学生用户信息
+export const alterStuInfo = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/info`,
+    data: params
+  });
+}
+
+//按关键字检索一位导师
+export const selectTutorKeyword = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/search`,
+    keyword: params.keyword,
+    sort: params.sort
+  });
+}
+
+//向某个导师发送申请
+export const TutorRequest = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/select`,
+    tid: params
+  });
+}
+
 
 
 
