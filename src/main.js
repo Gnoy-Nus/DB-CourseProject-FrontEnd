@@ -11,25 +11,22 @@ import 'jquery/dist/jquery'
 import Header from '@/components/Header'
 Vue.component(Header.name,Header);
 //注册全局函数
-import {WeatherQuery} from '@/api'
-Vue.prototype.WeatherQuery=WeatherQuery;
-import {LoginRequest} from '@/api'
-Vue.prototype.LoginRequest=LoginRequest;
+import {selectTutorKeyword} from '@/api'
+Vue.prototype.selectTutorKeyword=selectTutorKeyword;
+
 
 //测试api
-// WeatherQuery("宁波").then(res =>{
-//   if(res){
-//     console.log(res);
-//   }
-// })
-
 // var Testdata =
 // {
-//   usr:'zhujie',
-//   pwd:123456,
+//   keyword:{
+//     college:"计算机工程与科学学院",
+//   },
+//   sort:{
+//     tid: null,
+//   }
 // };
 
-// LoginRequest(Testdata).then(res=>{
+// selectTutorKeyword(Testdata).then(res=>{
 //   if(res){
 //     console.log(res);
 //   }

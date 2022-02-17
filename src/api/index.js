@@ -36,6 +36,14 @@ export const reqStuInfo = () => {
   });
 }
 
+//获取教师用户信息
+export const reqTeaInfo = () => {
+  return requests({
+    method: 'get',
+    url: `/teacher/info`,
+  });
+}
+
 //修改学生用户信息
 export const alterStuInfo = (params) => {
   return requests({
@@ -45,13 +53,13 @@ export const alterStuInfo = (params) => {
   });
 }
 
-//按关键字检索一位导师
+//按关键字检索一位导师  //params:包含keyword对象和sort对象
 export const selectTutorKeyword = (params) => {
   return requests({
     method: 'post',
     url: `/student/search`,
-    keyword: params.keyword,
-    sort: params.sort
+    data:params,
+
   });
 }
 

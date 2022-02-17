@@ -7,7 +7,7 @@
           <h1>login</h1>
           <input type="text" placeholder="工号" v-model="tea_id" />
           <input type="password" placeholder="密码" v-model="tea_pwd" />
-          <button>登录</button>
+          <button @click.prevent="teacherLogin">登录</button>
         </div>
         <!-- 学生登录页面 -->
         <div class="login-box">
@@ -89,8 +89,8 @@ export default {
         tea_id &&
           tea_pwd &&
           (await this.$store.dispatch("userLogin", {
-            usr: stu_id,
-            pwd: stu_pwd,
+            usr: tea_id,
+            pwd: tea_pwd,
             type: "t",
           }));
         let toPath = "/teacher";

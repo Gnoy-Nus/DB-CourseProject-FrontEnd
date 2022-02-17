@@ -10,16 +10,12 @@
             class="ui-accordion-header ui-helper-reset ui-state-default"
             style="padding: 1px 0px 0px 2px"
           >
-            <span style="font-weight: bold"> 学生信息</span>
-            <div style="line-height: 23px">学号：{{ StuInfo.id }}</div>
-            <div style="line-height: 23px">姓名：{{ StuInfo.name }}</div>
-            <div style="line-height: 23px">学院：{{ StuInfo.college }}</div>
-            <div style="line-height: 23px">专业：{{ StuInfo.major }}</div>
+            <span style="font-weight: bold"> 教师信息</span>
+            <div style="line-height: 23px">工号：{{ TeaInfo.id }}</div>
+            <div style="line-height: 23px">姓名：{{ TeaInfo.name }}</div>
+            <div style="line-height: 23px">学院：{{ TeaInfo.college }}</div>
             <div style="color: Red; font-weight: bold; line-height: 23px">
-              完成操作后请点击&nbsp;<a
-                href="#/login"
-                style="color: Red"
-                @click="logOut"
+              完成操作后请点击&nbsp;<a href="#/login" style="color: Red" @click="logOut"
                 >[安全退出]</a
               >
             </div>
@@ -28,16 +24,16 @@
           <li name="menuapptype" id="menuapptype0" class="treeview">
             <ul class="treeview-menu">
               <li name="menuapp" id="CourseSelectionStudentFuzzyQuery" class="">
-                <router-link to="/student/StudentSelect">
+                <router-link to="/teacher/ManageStudent">
                   <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">选择导师</span>
+                  ><span style="color: Red">管理学生</span>
                 </router-link>
               </li>
 
               <li name="menuapp" id="CourseReturnStudentCourseReturn" class="">
-                <router-link to="/student/StudentCheck">
+                <router-link to="/teacher/CheckStudentRequests">
                   <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">查看已申请的导师</span>
+                  ><span style="color: Red">查看申请中的学生</span>
                 </router-link>
               </li>
             </ul>
@@ -50,8 +46,6 @@
     <div class="wrapper">
       <div class="content-wrapper">
         <router-view></router-view>
-        {{TeacherList[0].name}}
-        {{TeacherList[0].college}}
       </div>
     </div>
   </div>
@@ -63,6 +57,7 @@ export default {
   name: "",
   data() {
     return {
+       
     };
   },
   beforeMount() {
@@ -76,8 +71,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$store.dispatch("getStuInfo");
-      this.$store.dispatch("getTeacherList",{keyword:{college:this.StuInfo.college}});
+      this.$store.dispatch("getTeaInfo");
     },
     logOut() {
       this.$store.dispatch("userLogout");
@@ -85,8 +79,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["StuInfo"]),
-    ...mapGetters(["TeacherList"]),
+    ...mapGetters(["TeaInfo"]),
   },
 };
 </script>
