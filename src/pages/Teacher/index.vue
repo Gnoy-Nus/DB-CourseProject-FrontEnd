@@ -61,10 +61,6 @@ export default {
     };
   },
   beforeMount() {
-    //验证Token是否存在;
-    if(!this.$store.state.user.token){
-      this.$router.push("/login");
-    }
   },
   mounted() {
     this.getData();

@@ -3,7 +3,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-
+//store
+import store from '@/store'
 //引入路由
 import Login from '@/pages/Login'
 import Student from '@/pages/Student'
@@ -14,13 +15,13 @@ import ManageStudent from '@/pages/Teacher/ManageStudent'
 import CheckStudentRequests from '@/pages/Teacher/CheckRequest'
 //解决重复访问路由地址报错
 let originalPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function push(location,resolve,reject) {
-    if(resolve && reject){
-        originalPush.call(this,location,resolve,reject);
-    }else{
-        originalPush.call(this,location,()=>{},()=>{});
+VueRouter.prototype.push = function push(location, resolve, reject) {
+    if (resolve && reject) {
+        originalPush.call(this, location, resolve, reject);
+    } else {
+        originalPush.call(this, location, () => { }, () => { });
     }
-  //return originalPush.call(this, location).catch(err => err)
+    //return originalPush.call(this, location).catch(err => err)
 };
 
 export default new VueRouter({
@@ -35,16 +36,25 @@ export default new VueRouter({
             component: Student,
             children: [
                 {
-                  // path: '/student/StudentSelect',
-                  path: 'StudentSelect',
-                  component: StudentSelect,
+                    // path: '/student/StudentSelect',
+                    path: 'StudentSelect',
+                    component: StudentSelect,
                 },
                 {
                     // path: '/student/StudentCheck',
                     path: 'StudentCheck',
                     component: StudentCheck,
                 },
-            ]
+            ],
+            beforeEnter: (to, from, next) => { // 路由前置守卫
+                // 如果有token且login状态正常，放行
+                if (store.state.user.token&&store.state.user.loginType=="s") {
+                    next()
+                } else {
+                    //否则跳转至默认页面
+                    next('/')
+                }
+            }
         }
         ,
         {
@@ -52,16 +62,25 @@ export default new VueRouter({
             component: Teacher,
             children: [
                 {
-                  // path: '/teacher/ManageStudent',
-                  path: 'ManageStudent',
-                  component: ManageStudent,
+                    // path: '/teacher/ManageStudent',
+                    path: 'ManageStudent',
+                    component: ManageStudent,
                 },
                 {
                     // path: '/teacher/CheckRequests',
                     path: 'CheckStudentRequests',
                     component: CheckStudentRequests,
                 },
-            ]
+            ],
+            beforeEnter: (to, from, next) => { // 路由前置守卫
+                // 如果有token且login状态正常，放行
+                if (store.state.user.token&&store.state.user.loginType=="t") {
+                    next()
+                } else {
+                    //否则跳转至默认页面
+                    next('/')
+                }
+            }
         }
         ,
         //重定向

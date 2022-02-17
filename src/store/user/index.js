@@ -7,19 +7,26 @@ import { setToken, getToken, removeToken } from "@/utils/token";
 //登录与注册的模块
 const state = {
     token: getToken(),
+    loginType: JSON.parse(sessionStorage.getItem(`loginType`))||"",
 };
 
 //mutations:修改state的唯一手段
 const mutations = {
     USERLOGIN(state, result) {
+        setToken(result);
         state.token = result;
+    },
+    LOGINTYPE(state, result){
+        sessionStorage.setItem(`loginType`, JSON.stringify(result))
+        state.loginType=result;
     },
     //清除本地数据
     CLEAR(state) {
-        //帮仓库中先关用户信息清空
+        //帮仓库中用户信息清空
         state.token = '';
-        this.$store.student.state.stuInfo = {};
+        state.loginType = "";
         //本地存储数据清空
+        sessionStorage.removeItem("loginType");
         removeToken();
     }
 };
@@ -34,8 +41,7 @@ const actions = {
         if (result.status == 1) {
             //用户已经登录成功且获取到token
             commit("USERLOGIN", result.token);
-            //持久化存储token
-            setToken(result.token);
+            commit("LOGINTYPE",data.type);
             return "ok";
         } else {
             return Promise.reject(new Error("faile"));
