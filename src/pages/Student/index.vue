@@ -86,6 +86,7 @@ export default {
 </script>
 
 <style scoped>
+
 .wrapper {
   margin: 0;
   padding: 0;
@@ -120,6 +121,7 @@ export default {
   height: 95%;
   overflow:auto;
   z-index: 1;
+  overflow: auto;
 }
 
 .sidebar {

@@ -2,6 +2,7 @@
   <div class="teacherdata">
     <el-table
       :data="tableData"
+      border="1"
       style="width: 100%">
       <el-table-column
         prop="id"
@@ -83,9 +84,8 @@
   padding-top: 50px;
   min-height: 90%;
   width: 1500px;
-
-}
-
+  border-top:1px dashed #000;
+  }
 
 </style>
 
