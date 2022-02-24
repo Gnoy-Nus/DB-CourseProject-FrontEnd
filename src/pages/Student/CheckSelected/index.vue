@@ -84,7 +84,6 @@
   padding-top: 50px;
   min-height: 90%;
   width: 1500px;
-  border-top:1px dashed #000;
   }
 
 </style>

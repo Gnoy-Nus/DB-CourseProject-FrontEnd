@@ -11,6 +11,8 @@ import Student from '@/pages/Student'
 import Teacher from '@/pages/Teacher'
 import StudentSelect from '@/pages/Student/StudentSelect'
 import StudentCheck from '@/pages/Student/CheckSelected'
+import StudentAccount from '@/pages/Student/StudentAccount'
+import StudentModify from '@/pages/Student/StudentModify'
 import ManageStudent from '@/pages/Teacher/ManageStudent'
 import CheckStudentRequests from '@/pages/Teacher/CheckRequest'
 //解决重复访问路由地址报错
@@ -44,6 +46,16 @@ export default new VueRouter({
                     // path: '/student/StudentCheck',
                     path: 'StudentCheck',
                     component: StudentCheck,
+                },
+                {
+                    // path: '/student/StudentAccount',
+                    path: 'StudentAccount',
+                    component: StudentAccount,
+                },
+                {
+                    // path: '/student/StudentModify',
+                    path: 'StudentModify',
+                    component: StudentModify,
                 },
             ],
             beforeEnter: (to, from, next) => { // 路由前置守卫
