@@ -7,6 +7,9 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'jquery/dist/jquery.slim'
 import 'jquery/dist/jquery'
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 //注册全局组件
 import Header from '@/components/Header'
 Vue.component(Header.name,Header);
@@ -32,9 +35,12 @@ Vue.prototype.selectTutorKeyword=selectTutorKeyword;
 //   }
 // });
 
+Vue.use(ElementUI);
+
 new Vue({
   //注册路由
   router,
   store,
+  el: '#app',
   render: h => h(App),
 }).$mount('#app')
