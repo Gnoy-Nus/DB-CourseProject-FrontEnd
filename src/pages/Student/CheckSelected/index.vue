@@ -77,13 +77,13 @@
 
 <style scoped>
 .teacherdata {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 250px;
   padding-top: 50px;
   min-height: 90%;
   width: 1500px;
-
+  overflow: auto;
 }
 
 
