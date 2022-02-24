@@ -50,8 +50,6 @@
     <div class="wrapper">
       <div class="content-wrapper">
         <router-view></router-view>
-        {{TeacherList[0].name}}
-        {{TeacherList[0].college}}
       </div>
     </div>
   </div>

@@ -1,22 +1,3 @@
-<!--
-<template>
-  <div>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-    <h1>CheckSelected test</h1>
-  </div>
-</template>
--->
-
 <template>
   <div class="teacherdata">
     <el-table
@@ -93,12 +74,6 @@
       }
     }
 </script>
-
-<!--
-<script>
-export default {};
-</script>
--->
 
 <style scoped>
 .teacherdata {
