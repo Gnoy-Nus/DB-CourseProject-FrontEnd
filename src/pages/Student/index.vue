@@ -40,6 +40,13 @@
                   ><span style="color: Red">查看已申请的导师</span>
                 </router-link>
               </li>
+
+              <li name="menuapp" id="StudentModifyPersonalInformation" class="">
+                <router-link to="/student/StudentModify">
+                  <i class="fa fa-circle-o"></i
+                  ><span style="color: Red">修改个人信息</span>
+                </router-link>
+              </li>
             </ul>
           </li>
         </ul>
