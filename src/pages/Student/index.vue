@@ -95,19 +95,9 @@ export default {
   /*background: linear-gradient(200deg, #f3e8e7, #ebffe3);*/
   position: relative;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   /*字体：白色 */
   color: white;
-}
-
-.main-header {
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #08acee;
-  position: relative;
-  max-height: 100px;
-  z-index: 3;
 }
 
 .main-sidebar {
@@ -126,8 +116,9 @@ export default {
 }
 .content-wrapper {
   color: black;
-  background-color: rgb(240, 241, 255);
-  height: 100%;
+  background-color: rgb(240, 255, 247);
+  height: 95%;
+  overflow:auto;
   z-index: 1;
 }
 
