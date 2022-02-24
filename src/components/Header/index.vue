@@ -42,19 +42,6 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  margin: 0;
-  padding: 0;
-  /* 100%窗口高度 */
-  height: 100vh;
-  /* 渐变背景 */
-  /*background: linear-gradient(200deg, #f3e8e7, #ebffe3);*/
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  /*字体：白色 */
-  color: white;
-}
 
 .main-header {
   top: 0;

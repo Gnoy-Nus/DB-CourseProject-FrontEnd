@@ -1,5 +1,6 @@
 <template>
   <div class="teacherdata">
+
     <el-table ref="multipleTable" :data="TeacherList" border tooltip-effect="dark" style="width: 100%">
       <el-table-column type="selection" width="55"> </el-table-column>
       <el-table-column prop="id" label="工号" width="180"> </el-table-column>
@@ -18,8 +19,6 @@
     </div>
   </div>
 </template>
-
-
 
 <script>
 import { mapState, mapGetters } from "vuex";
@@ -41,8 +40,8 @@ export default {
   padding-top: 100px;
   min-height: 90%;
   width: 1500px;
-
   box-shadow: 10px 10px 5px #888888;
+  overflow: auto;
 }
 </style>
 

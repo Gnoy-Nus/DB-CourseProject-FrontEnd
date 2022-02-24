@@ -101,16 +101,6 @@ export default {
   color: white;
 }
 
-.main-header {
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #08acee;
-  position: relative;
-  max-height: 100px;
-  z-index: 3;
-}
-
 .main-sidebar {
   background-color: #2c3e50;
   position: absolute;
@@ -127,8 +117,9 @@ export default {
 }
 .content-wrapper {
   color: black;
-  background-color: rgb(240, 241, 255);
+  background-color: rgb(240, 255, 247);
   height: 95%;
+  overflow:auto;
   z-index: 1;
   overflow: auto;
 }
