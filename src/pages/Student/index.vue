@@ -40,21 +40,6 @@
                   ><span style="color: Red">查看已申请的导师</span>
                 </router-link>
               </li>
-
-              <li name="menuapp" id="StudentModifyPersonalInformation" class="">
-                <router-link to="/student/StudentModify">
-                  <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">修改个人信息</span>
-                </router-link>
-              </li>
-
-              <li name="menuapp" id="StudentAccountManagement" class="">
-                <router-link to="/student/StudentAccount">
-                  <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">账号管理</span>
-                </router-link>
-              </li>
-
             </ul>
           </li>
         </ul>
@@ -65,8 +50,6 @@
     <div class="wrapper">
       <div class="content-wrapper">
         <router-view></router-view>
-        {{TeacherList[0].name}}
-        {{TeacherList[0].college}}
       </div>
     </div>
   </div>
@@ -103,6 +86,7 @@ export default {
 </script>
 
 <style scoped>
+
 .wrapper {
   margin: 0;
   padding: 0;
@@ -112,7 +96,7 @@ export default {
   /*background: linear-gradient(200deg, #f3e8e7, #ebffe3);*/
   position: relative;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   /*字体：白色 */
   color: white;
 }
@@ -144,8 +128,9 @@ export default {
 .content-wrapper {
   color: black;
   background-color: rgb(240, 241, 255);
-  height: 100%;
+  height: 95%;
   z-index: 1;
+  overflow: auto;
 }
 
 .sidebar {
