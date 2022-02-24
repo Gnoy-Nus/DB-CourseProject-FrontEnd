@@ -110,12 +110,17 @@
       label="操作"
       width="100">
       <template>
-        <el-button type="text" size="small">撤销申请</el-button>
+        <el-popconfirm
+          title="是否确认撤销？"
+        >   
+          <el-button slot="reference" type="text" size="small">撤销申请</el-button>
+        </el-popconfirm>
       </template>
       </el-table-column>
   </el-table>
  </div> 
 </template>
+
 
 <script>
     export default {
