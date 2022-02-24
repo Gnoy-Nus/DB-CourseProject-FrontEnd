@@ -3,14 +3,14 @@
 
     <el-table ref="multipleTable" :data="TeacherList" border tooltip-effect="dark" style="width: 100%">
       <el-table-column type="selection" width="55"> </el-table-column>
-      <el-table-column prop="id" label="工号" width="180"> </el-table-column>
-      <el-table-column prop="gender" label="性别"> </el-table-column>
-      <el-table-column prop="name" label="姓名"> </el-table-column>
-      <el-table-column prop="title" label="职称"> </el-table-column>
-      <el-table-column prop="college_id" label="院系名称"> </el-table-column>
-      <el-table-column prop="telephone" label="手机号"> </el-table-column>
-      <el-table-column prop="addr" label="地址"> </el-table-column>
-      <el-table-column prop="email" label="个人网站"> </el-table-column>
+      <el-table-column prop="id" label="工号" width="65"> </el-table-column>
+      <el-table-column prop="gender" label="性别" width="55"> </el-table-column>
+      <el-table-column prop="name" label="姓名" width="65"> </el-table-column>
+      <el-table-column prop="title" label="职称" width="65"> </el-table-column>
+      <el-table-column prop="college" label="院系名称" width="180"> </el-table-column>
+      <el-table-column prop="telephone" label="手机号" width="180"> </el-table-column>
+      <el-table-column prop="addr" label="地址" width="180"> </el-table-column>
+      <el-table-column prop="email" label="个人网站" width="180"> </el-table-column>
       <el-table-column prop="tid" label="科研方向" width="180"> </el-table-column>
       <el-table-column prop="tid" label="已选择人数" width="180"> </el-table-column>
     </el-table>
