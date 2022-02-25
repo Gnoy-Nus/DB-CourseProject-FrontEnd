@@ -2,14 +2,28 @@
   <div class="teacherdata">
 
 
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="审批人">
-        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+    <el-form :inline="true" :model="formInline" class="formselect">
+      <el-form-item label="姓名">
+        <el-input v-model="formInline.name" placeholder="姓名"></el-input>
       </el-form-item>
-      <el-form-item label="活动区域">
-        <el-select v-model="formInline.region" placeholder="活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
+      <el-form-item label="职称">
+        <el-select v-model="formInline.title" placeholder="职称">
+          <el-option label="教授" value="教授"></el-option>
+          <el-option label="副教授" value="副教授"></el-option>
+          <el-option label="讲师" value="讲师"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="院系名称">
+        <el-select v-model="formInline.college" placeholder="院系名称">
+          <el-option label="计算机工程与科学学院" value="计算机工程与科学学院"></el-option>
+          <el-option label="理学院" value="理学院"></el-option>
+          <el-option label="钱伟长学院" value="钱伟长学院"></el-option>
+          <el-option label="材料科学与工程学院" value="材料科学与工程学院"></el-option>
+          <el-option label="通信与信息工程学院" value="通信与信息工程学院"></el-option>
+          <el-option label="经济学院" value="经济学院"></el-option>
+          <el-option label="管理学院" value="管理学院"></el-option>
+          <el-option label="文学院" value="文学院"></el-option>
+          <el-option label="法学院" value="法学院"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -47,8 +61,9 @@ export default {
   data() {
     return {
       formInline: {
-        user: '',
-        region: ''
+        name: '',
+        title: '',
+        college: '',
         }
     };
   },
