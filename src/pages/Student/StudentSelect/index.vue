@@ -60,8 +60,8 @@
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template>
-          <el-popconfirm title="确定要申请吗？">
-            <el-button slot="reference">申请</el-button>
+          <el-popconfirm title="确定要申请吗？" >
+            <el-button slot="reference" >申请</el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
@@ -81,6 +81,7 @@ export default {
   data() {
     return {
       pageIndex: 1,
+      totalLength:10,
       formInline: {
         name: "",
         title: "",
@@ -93,8 +94,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getTeacherList", {
+      type:"search",
       keyword: { college: null },
-      //page: 1,
+      page: 1,
       size: 50,
     });
   },
@@ -102,12 +104,13 @@ export default {
     conditionQuery() {
       this.pageIndex = 1;
       this.$store.dispatch("getTeacherList", {
+        type:"search",
         keyword: {
           name: this.formInline.name || null,
           college: this.formInline.college || null,
           title: this.formInline.title || null,
         },
-        //page: 1,
+        page: 1,
         size: 50,
       });
       console.log("query!");
@@ -125,7 +128,7 @@ export default {
       // });
     },
     nextPage() {
-      this.pageIndex+=1;
+      this.pageIndex += 1;
     },
   },
 };

@@ -12,12 +12,6 @@ export const LoginRequest = (params) => {
     data: params
   });
 }
-export const WeatherQuery = (city) => {
-  return requests({
-    method: 'get',
-    url: `${weatherQueryURL}${city}`,
-  });
-}
 
 //用户登录
 export const reqUserLogin = (params) => {
@@ -31,11 +25,15 @@ export const reqUserLogin = (params) => {
 //获取学生用户信息
 export const reqStuInfo = () => {
   return requests({
-    method: 'get',
+    method: 'post',
     url: `/student/info`,
+    data: {
+      type: "show"
+    }
   });
 }
 
+//以下未完成
 //获取教师用户信息
 export const reqTeaInfo = () => {
   return requests({
@@ -43,6 +41,7 @@ export const reqTeaInfo = () => {
     url: `/teacher/info`,
   });
 }
+
 
 //修改学生用户信息
 export const alterStuInfo = (params) => {
@@ -58,8 +57,7 @@ export const selectTutorKeyword = (params) => {
   return requests({
     method: 'post',
     url: `/student/search`,
-    data:params,
-
+    data: params,
   });
 }
 

@@ -85,6 +85,12 @@ export default {
   methods: {
     getData() {
       this.$store.dispatch("getStuInfo");
+      this.$store.dispatch("getTeacherList", {
+      type:"search",
+      keyword: { college: null },
+      page: 1,
+      size: 50,
+    });
     },
     logOut() {
       this.$store.dispatch("userLogout");
