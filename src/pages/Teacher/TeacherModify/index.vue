@@ -2,10 +2,10 @@
   <div class="StudentInfoList">
         <el-descriptions title="个人信息" direction="vertical" :column="3" border>
             <el-descriptions-item label="备注">
-                <el-tag>学生信息</el-tag>
+                <el-tag>导师信息</el-tag>
             </el-descriptions-item>
             <el-descriptions-item label="姓名">{{ TeacherList.name }}</el-descriptions-item>
-            <el-descriptions-item label="性别">{{ TeacherList.gender }}</el-descriptions-item>
+            <el-descriptions-item label="性别">{{ StuInfo.gender }}</el-descriptions-item>
             <el-descriptions-item label="出生日期">{{ StuInfo.birth }}</el-descriptions-item>
             <el-descriptions-item label="学院">{{ StuInfo.college }}</el-descriptions-item>
             <el-descriptions-item label="专业">{{ StuInfo.major }}</el-descriptions-item>
@@ -18,7 +18,7 @@
             <el-descriptions-item label="个人网站">{{ StuInfo.website }}
                 <el-input v-model="input3" placeholder="请输入内容"></el-input>
             </el-descriptions-item>
-            <el-descriptions-item label="个人介绍">{{ StuInfo.info }}
+            <el-descriptions-item label="科研方向">{{ StuInfo.field }}
                 <el-input
                     type="textarea"
                     :rows="4"

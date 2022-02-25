@@ -62,33 +62,7 @@
 </template>
 
 <script>
-    export default {
-      data() {
-        return {
-          tableData: [{
-            id: '1001',
-            tid:'10001',
-            gender:'男',
-            name: '王小虎',
-            title:'教授',
-            college_id:'01',
-            telephone:'12345678912',
-            addr: '上海市普陀区金沙江路 1518 弄',
-            email:'111@qq.com'
-          }, {
-            id: '1002',
-            tid:'10002',
-            gender:'女',
-            name: '王大虎',
-            title:'讲师',
-            college_id:'02',
-            telephone:'12345678998',
-            addr: '上海市普陀区金沙江路 1517 弄',
-            email:'dahuwang@shu.edu.cn'
-          }]
-        }
-      }
-    }
+export default {};
 </script>
 
 <style scoped>
