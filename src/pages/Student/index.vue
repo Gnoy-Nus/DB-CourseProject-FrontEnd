@@ -7,7 +7,7 @@
           <div
             id="divstuinfo"
             class="ui-accordion-header ui-helper-reset ui-state-default"
-            style="padding: 1px 0px 0px 2px"
+            style="padding: 50px 0px 0px 2px"
           >
             <span style="font-weight: bold"> 学生信息</span>
             <div style="line-height: 23px">学号：{{ StuInfo.id }}</div>
@@ -26,34 +26,39 @@
 
           <li name="menuapptype" id="menuapptype0" class="treeview">
             <ul class="treeview-menu">
-              <li name="menuapp" id="CourseSelectionStudentFuzzyQuery" class="">
-                <router-link to="/student/StudentSelect">
-                  <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">选择导师</span>
-                </router-link>
-              </li>
-
-              <li name="menuapp" id="CourseReturnStudentCourseReturn" class="">
-                <router-link to="/student/StudentCheck">
-                  <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">查看已申请的导师</span>
-                </router-link>
-              </li>
-
-              <li name="menuapp" id="StudentModifyPersonalInformation" class="">
-                <router-link to="/student/StudentModify">
-                  <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">查看/修改个人信息</span>
-                </router-link>
-              </li>
-
-              <li name="menuapp" id="StudentAccountManagement" class="">
-                <router-link to="/student/StudentAccount">
-                  <i class="fa fa-circle-o"></i
-                  ><span style="color: Red">账号管理</span>
-                </router-link>
-              </li>
-
+              <el-row class="tac">
+                <el-col :span="100">
+                  <el-menu
+                    default-active="2"
+                    class="el-menu-vertical-demo"
+                    @open="handleOpen"
+                    @close="handleClose"
+                    background-color="#2c3e50"
+                    text-color="#fff"
+                    active-text-color="#ffd04b">
+                    <el-submenu index="1">
+                      <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>操作</span>
+                      </template>
+                      <el-menu-item-group>
+                        <router-link to="/student/StudentSelect">
+                        <el-menu-item index="1-1">选择导师</el-menu-item>
+                        </router-link>
+                        <router-link to="/student/StudentCheck">
+                        <el-menu-item index="1-2">查看已申请的导师</el-menu-item>
+                        </router-link>
+                        <router-link to="/student/StudentModify">
+                        <el-menu-item index="1-3">查看/修改个人信息</el-menu-item>
+                        </router-link>
+                        <router-link to="/student/StudentAccount">
+                        <el-menu-item index="1-4">账号管理</el-menu-item>
+                        </router-link>
+                      </el-menu-item-group>
+                    </el-submenu>
+                  </el-menu>
+                </el-col>
+              </el-row>  
             </ul>
           </li>
         </ul>
@@ -155,6 +160,11 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.tac {
+  position: absolute;
+  left: 15px;
 }
 </style>
 
