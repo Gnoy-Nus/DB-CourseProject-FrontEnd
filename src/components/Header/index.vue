@@ -1,37 +1,9 @@
 <template>
   <header class="main-header">
-      <h1>test main header</h1>
-      <!-- Logo 
-      <a href="#" @click="" class="logo">
-        <span class="logo-mini"> </span>
-        <span
-          class="logo-lg"
-          style="font-size: 14px"
-          datahtmllocale="integrativecsssuniversity"
-          >上海大学本硕博一体化选课系统</span
-        >
-      </a> -->
-
-      <!-- Navbar -->
-      <!-- 
-      <nav class="navbar navbar-static-top">      
-        <div class="navbar-custom-menu">
-          <input
-            id="h_language"
-            name="h_language"
-            type="hidden"
-            value="zh_CN"
-          />
-          <ul class="nav navbar-nav">
-            <a href="/Login/Logout"
-              ><i class="fa fa-power-off"></i
-              ><span class="nav-function-text"
-                >&emsp;<span datahtmllocale="logout">安全退出</span></span
-              ></a
-            >
-          </ul>
-        </div>
-      </nav> -->
+      <h1>导师学生双向选择系统</h1>
+      <!-- <div class="logo">
+        <img src="C:\Users\DRAGON\Desktop\database\TutorSelectorWeb_FrontEnd\src\components\img\logo-white.png" alt="导师学生双向选择系统" width="40" height="30">
+      </div> -->
     </header>
 </template>
 
@@ -51,5 +23,11 @@ export default {
   position: relative;
   max-height: 100px;
   z-index: 3;
+}
+
+.logo {
+  top: 0;
+  left: 0;
+  position: relative;
 }
 </style>
