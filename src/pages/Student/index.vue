@@ -2,7 +2,6 @@
   <div class="wrapper">
     <Header></Header>
     <aside class="main-sidebar">
-      <h1>test sidebar</h1>
       <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
           <div
@@ -134,7 +133,6 @@ export default {
   height: 95%;
   overflow:auto;
   z-index: 1;
-  overflow: auto;
 }
 
 .sidebar {

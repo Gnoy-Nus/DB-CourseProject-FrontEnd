@@ -2,7 +2,6 @@
   <div class="wrapper">
     <Header></Header>
     <aside class="main-sidebar">
-      <h1>test sidebar</h1>
       <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
           <div
@@ -109,16 +108,6 @@ export default {
   color: white;
 }
 
-.main-header {
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #08acee;
-  position: relative;
-  max-height: 100px;
-  z-index: 3;
-}
-
 .main-sidebar {
   background-color: #2c3e50;
   position: absolute;
@@ -136,7 +125,8 @@ export default {
 .content-wrapper {
   color: black;
   background-color: rgb(240, 241, 255);
-  height: 100%;
+  overflow:auto;
+  height: 95%;
   z-index: 1;
 }
 
