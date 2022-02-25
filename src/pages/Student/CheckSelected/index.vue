@@ -62,7 +62,23 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      pageIndex: 1,
+    };
+  },
+  computed: {
+    ...mapGetters(["SelectedTeacherList"]),
+  },
+  mounted() {
+    console.log("start");
+    this.$store.dispatch("getApplyTeacherList");
+  },
+  methods: {
+  },
+};
 </script>
 
 <style scoped>

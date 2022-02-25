@@ -23,7 +23,7 @@
               >
             </div>
           </div>
-          
+
           <li name="menuapptype" class="treeview">
             <ul class="treeview-menu">
               <el-row class="tac">
@@ -131,7 +131,7 @@ export default {
 }
 .content-wrapper {
   color: black;
-  background-color: rgb(245, 240, 255);
+  background-color: rgb(159, 172, 226);
   height: 90%;
   overflow: auto;
   z-index: 1;

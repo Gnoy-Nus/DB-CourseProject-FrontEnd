@@ -44,7 +44,7 @@ const actions = {
             commit("LOGINTYPE",data.type);
             return "ok";
         } else {
-            return Promise.reject(new Error("faile"));
+            return Promise.reject(new Error(result.message));
         }
     },
 

@@ -2,17 +2,6 @@
 
 import requests from './request';  //此处requests等于axios
 
-let weatherQueryURL = 'http://wthrcdn.etouch.cn/weather_mini?city='
-
-//测试用api
-export const LoginRequest = (params) => {
-  return requests({
-    method: 'post',
-    url: `/login`,
-    data: params
-  });
-}
-
 //用户登录
 export const reqUserLogin = (params) => {
   return requests({
@@ -33,7 +22,16 @@ export const reqStuInfo = () => {
   });
 }
 
-//按关键字检索一位导师  //params:包含keyword对象和sort对象
+//修改学生用户信息
+export const modStuInfo = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/info`,
+    data: params,
+  });
+}
+
+//按关键字检索导师 
 export const selectTutorKeyword = (params) => {
   return requests({
     method: 'post',
@@ -41,6 +39,37 @@ export const selectTutorKeyword = (params) => {
     data: params,
   });
 }
+
+//向某个导师递交申请
+export const submitApply = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/search`,
+    data: params,
+  });
+}
+
+//查看已经申请的导师
+export const checkApplyingTutors = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/show`,
+    data: {
+      type: "show"
+    }
+  });
+}
+
+//修改学生账户密码
+export const changeStudentAccount = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/account`,
+    data: params,
+  });
+}
+
+
 
 //以下未完成
 //获取教师用户信息
