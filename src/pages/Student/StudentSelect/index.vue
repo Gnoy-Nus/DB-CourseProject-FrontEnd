@@ -17,7 +17,7 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="TeacherList" border style="width: 100%">
+    <el-table :data="TeacherList.slice(0,50)" border style="width: 100%">
       <el-table-column prop="id" label="工号" width="180"> </el-table-column>
       <el-table-column prop="gender" label="性别"> </el-table-column>
       <el-table-column prop="name" label="姓名"> </el-table-column>
