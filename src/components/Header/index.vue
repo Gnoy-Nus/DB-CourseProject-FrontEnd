@@ -1,10 +1,8 @@
 <template>
   <header class="main-header">
-      <h1>导师学生双向选择系统</h1>
-      <!-- <div class="logo">
-        <img src="C:\Users\DRAGON\Desktop\database\TutorSelectorWeb_FrontEnd\src\components\img\logo-white.png" alt="导师学生双向选择系统" width="40" height="30">
-      </div> -->
-    </header>
+    <img class="logo" src="./img/logo-white.png" alt="" />
+    <h1 class="title">导师学生双向选择系统</h1>
+  </header>
 </template>
 
 <script>
@@ -26,8 +24,14 @@ export default {
 }
 
 .logo {
-  top: 0;
-  left: 0;
+  padding-top: 0;
+  right: 850px;
   position: relative;
+}
+
+.title {
+  top: 25px;
+  left:750px;
+  position: fixed;
 }
 </style>

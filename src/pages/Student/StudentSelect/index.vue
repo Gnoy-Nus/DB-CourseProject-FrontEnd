@@ -4,6 +4,9 @@
       <el-form-item label="姓名">
         <el-input v-model="formInline.name" placeholder="姓名"></el-input>
       </el-form-item>
+      <el-form-item label="研究方向">
+        <el-input v-model="formInline.field" placeholder="研究方向"></el-input>
+      </el-form-item>
       <el-form-item label="职称">
         <el-select v-model="formInline.title" placeholder="职称">
           <el-option label="教授" value="教授"></el-option>
@@ -84,6 +87,7 @@ export default {
       totalLength:10,
       formInline: {
         name: "",
+        field:"",
         title: "",
         college: "",
       },
