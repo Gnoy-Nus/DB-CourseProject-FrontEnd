@@ -31,7 +31,7 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="TeacherList" border style="width: 100%">
+    <el-table :data="TeacherList.slice(0,50)" border style="width: 100%">
       <el-table-column prop="id" label="工号" width="180"> </el-table-column>
       <el-table-column prop="gender" label="性别"> </el-table-column>
       <el-table-column prop="name" label="姓名"> </el-table-column>
@@ -42,9 +42,13 @@
       <el-table-column prop="website" label="个人网站" width="180"> </el-table-column>
       <el-table-column prop="field" label="科研方向" width="180"> </el-table-column>
       <el-table-column prop="num" label="已选择人数" width="180"> </el-table-column>
-      <el-table-column fixed="right" label="操作" width="100">
+      <el-table-column fixed="right" label="操作" width="150">
       <template>
-        <el-button type="text" size="small">申请</el-button>
+        <el-popconfirm
+          title="确定要申请吗？"
+        >
+          <el-button slot="reference">申请</el-button>
+        </el-popconfirm>
       </template>
     </el-table-column>
 
