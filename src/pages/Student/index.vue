@@ -132,7 +132,7 @@ export default {
 }
 .content-wrapper {
   color: black;
-  background-color: rgb(240, 255, 247);
+  background-color: rgb(245, 240, 255);
   height: 95%;
   overflow:auto;
   z-index: 1;

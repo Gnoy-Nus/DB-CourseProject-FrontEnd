@@ -1,6 +1,7 @@
 <template>
   <div class="teacherdata">
 
+
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-form-item label="审批人">
         <el-input v-model="formInline.user" placeholder="审批人"></el-input>
@@ -32,6 +33,7 @@
         <el-button type="text" size="small">申请</el-button>
       </template>
     </el-table-column>
+
     </el-table>
   </div>
 </template>
