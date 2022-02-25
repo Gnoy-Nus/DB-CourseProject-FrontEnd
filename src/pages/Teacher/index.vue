@@ -36,6 +36,20 @@
                   ><span style="color: Red">查看申请中的学生</span>
                 </router-link>
               </li>
+
+              <li name="menuapp" id="TeacherModifyPersonalInformation" class="">
+                <router-link to="/teacher/TeacherModify">
+                  <i class="fa fa-circle-o"></i
+                  ><span style="color: Red">查看/修改个人信息</span>
+                </router-link>
+              </li>
+
+              <li name="menuapp" id="TeacherAccountManagement" class="">
+                <router-link to="/teacher/TeacherAccount">
+                  <i class="fa fa-circle-o"></i
+                  ><span style="color: Red">账号管理</span>
+                </router-link>
+              </li>
             </ul>
           </li>
         </ul>
