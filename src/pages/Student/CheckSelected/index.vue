@@ -1,7 +1,7 @@
 <template>
   <div class="teacherdata">
     <el-table
-      :data="tableData"
+      :data="TeacherList"
       border
       style="width: 100%">
       <el-table-column

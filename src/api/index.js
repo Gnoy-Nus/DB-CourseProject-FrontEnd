@@ -33,11 +33,20 @@ export const reqStuInfo = () => {
   });
 }
 
+//按关键字检索一位导师  //params:包含keyword对象和sort对象
+export const selectTutorKeyword = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/search`,
+    data: params,
+  });
+}
+
 //以下未完成
 //获取教师用户信息
 export const reqTeaInfo = () => {
   return requests({
-    method: 'get',
+    method: 'post',
     url: `/teacher/info`,
   });
 }
@@ -52,14 +61,7 @@ export const alterStuInfo = (params) => {
   });
 }
 
-//按关键字检索一位导师  //params:包含keyword对象和sort对象
-export const selectTutorKeyword = (params) => {
-  return requests({
-    method: 'post',
-    url: `/student/search`,
-    data: params,
-  });
-}
+
 
 //向某个导师发送申请
 export const TutorRequest = (params) => {

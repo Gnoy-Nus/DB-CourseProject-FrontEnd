@@ -23,8 +23,8 @@
               >
             </div>
           </div>
-
-          <li name="menuapptype" id="menuapptype0" class="treeview">
+          
+          <li name="menuapptype" class="treeview">
             <ul class="treeview-menu">
               <el-row class="tac">
                 <el-col :span="100">
@@ -79,23 +79,15 @@ import { mapState, mapGetters } from "vuex";
 export default {
   name: "",
   data() {
-    return {
-    };
+    return {};
   },
-  beforeMount() {
-  },
+  beforeMount() {},
   mounted() {
     this.getData();
   },
   methods: {
     getData() {
       this.$store.dispatch("getStuInfo");
-      this.$store.dispatch("getTeacherList", {
-      type:"search",
-      keyword: { college: null },
-      page: 1,
-      size: 50,
-    });
     },
     logOut() {
       this.$store.dispatch("userLogout");
@@ -109,7 +101,6 @@ export default {
 </script>
 
 <style scoped>
-
 .wrapper {
   margin: 0;
   padding: 0;
@@ -141,8 +132,8 @@ export default {
 .content-wrapper {
   color: black;
   background-color: rgb(245, 240, 255);
-  height: 95%;
-  overflow:auto;
+  height: 90%;
+  overflow: auto;
   z-index: 1;
 }
 

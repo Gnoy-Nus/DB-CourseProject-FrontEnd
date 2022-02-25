@@ -50,16 +50,20 @@
       <el-table-column prop="gender" label="性别" width="80"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="100"> </el-table-column>
       <el-table-column prop="title" label="职称" width="100"> </el-table-column>
-      <el-table-column prop="college" label="院系名称" width="200">
+      <el-table-column prop="college" label="院系名称" width="150">
       </el-table-column>
 
-      <el-table-column prop="telephone" label="手机号"> </el-table-column>
-      <el-table-column prop="email" label="邮箱"> </el-table-column>
-      <el-table-column prop="website" label="个人网站" width="180">
+      <el-table-column prop="telephone" label="手机号" width="140"> </el-table-column>
+      <el-table-column prop="email" label="邮箱" width="140"> </el-table-column>
+      <el-table-column prop="website" label="个人网站" width="140">
       </el-table-column>
-      <el-table-column prop="field" label="科研方向" width="180">
+      <el-table-column prop="field" label="科研方向" width="140">
       </el-table-column>
-      <el-table-column prop="num" label="已选择人数" width="180">
+      <el-table-column prop="apply_num" label="申请人数" width="80">
+      </el-table-column>
+      <el-table-column prop="accept_num" label="已有学生" width="80">
+      </el-table-column>
+      <el-table-column prop="max_num" label="上限人数" width="80">
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template>
@@ -84,7 +88,6 @@ export default {
   data() {
     return {
       pageIndex: 1,
-      totalLength:10,
       formInline: {
         name: "",
         field:"",
@@ -97,6 +100,7 @@ export default {
     ...mapGetters(["TeacherList"]),
   },
   mounted() {
+    console.log("start");
     this.$store.dispatch("getTeacherList", {
       type:"search",
       keyword: { college: null },
@@ -121,15 +125,6 @@ export default {
     },
     prevPage() {
       this.pageIndex -= 1;
-      // if(this.pageIndex<1) this.pageIndex=1;
-      // this.$store.dispatch("getTeacherList", {
-      //   keyword: {
-      //     name: this.formInline.name || null,
-      //     college: this.formInline.college || null,
-      //     title: this.formInline.title || null,
-      //   },
-      //   page: this.pageIndex,
-      // });
     },
     nextPage() {
       this.pageIndex += 1;

@@ -8,7 +8,7 @@ import {
 //登录与注册的模块
 const state = {
     stuInfo: {},
-    teacherList:{}
+    teacherList:[]
 };
 
 //mutations:修改state的唯一手段
@@ -55,7 +55,7 @@ const getters = {
         return state.stuInfo || {};
     },
     TeacherList(state){
-        return state.teacherList||{};
+        return state.teacherList||[];
     }
 };
 
