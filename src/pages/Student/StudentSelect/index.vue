@@ -28,8 +28,11 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="prevPage">上一页</el-button>
+        <el-button type="primary" @click="nextPage">下一页</el-button>
       </el-form-item>
     </el-form>
+
 
     <el-table :data="TeacherList.slice(0,50)" border style="width: 100%">
       <el-table-column prop="id" label="工号" width="80"> </el-table-column>
@@ -37,6 +40,7 @@
       <el-table-column prop="name" label="姓名" width="100"> </el-table-column>
       <el-table-column prop="title" label="职称" width="100"> </el-table-column>
       <el-table-column prop="college" label="院系名称" width="200"> </el-table-column>
+
       <el-table-column prop="telephone" label="手机号"> </el-table-column>
       <el-table-column prop="email" label="邮箱"> </el-table-column>
       <el-table-column prop="website" label="个人网站" width="180"> </el-table-column>
@@ -69,6 +73,7 @@ import { mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
+      pageIndex:0,
       formInline: {
         name: '',
         title: '',
@@ -82,6 +87,13 @@ export default {
   methods: {
     onSubmit() {
       console.log('submit!');
+    },
+    prevPage(){
+      this.pageIndex-=1;
+      if(pageIndex<0) pageIndex=0;
+    },
+    nextPage(){
+      this.pageIndex+=1;
     }
   }
 };
