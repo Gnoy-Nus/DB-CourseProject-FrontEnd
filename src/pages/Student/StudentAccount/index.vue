@@ -1,17 +1,18 @@
 <template>
-  <div class="form">
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="审批人">
-        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+  <div class="password">
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form-item label="旧密码" prop="prepass">
+        <el-input v-model.number="ruleForm.age"></el-input>
       </el-form-item>
-      <el-form-item label="活动区域">
-        <el-select v-model="formInline.region" placeholder="活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
-        </el-select>
+      <el-form-item label="密码" prop="pass">
+        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="checkPass">
+        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -20,30 +21,69 @@
 <script>
   export default {
     data() {
-      return {
-        formInline: {
-          user: '',
-          region: ''
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
         }
-      }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm.pass) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
+      return {
+        ruleForm: {
+          prepass:'',
+          pass: '',
+          checkPass: ''
+        },
+        rules: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ],
+        }
+      };
     },
     methods: {
-      onSubmit() {
-        console.log('submit!');
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
       }
     }
   }
 </script>
 
+
 <style scoped>
 
-.form {
-  position: absolute;
+.password {
   top: 100px;
   left: 250px;
   padding-top: 100px;
-  min-height: 90%;
-  width: 150px;
+  min-height: 100%;
+  width: 500px;
+  margin: auto;
 }
 
 </style>
