@@ -84,10 +84,10 @@
   padding-top: 50px;
   min-height: 90%;
   width: 1500px;
+
   overflow: auto;
   border-top:1px dashed #000;
 }
-
 
 
 </style>
