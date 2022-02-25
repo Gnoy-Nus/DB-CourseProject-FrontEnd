@@ -33,12 +33,14 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="TeacherList.slice(this.pageIndex*50,this.pageIndex*50+50)" border style="width: 100%">
-      <el-table-column prop="id" label="工号" width="180"> </el-table-column>
-      <el-table-column prop="gender" label="性别"> </el-table-column>
-      <el-table-column prop="name" label="姓名"> </el-table-column>
-      <el-table-column prop="title" label="职称"> </el-table-column>
-      <el-table-column prop="college" label="院系名称"> </el-table-column>
+
+    <el-table :data="TeacherList.slice(0,50)" border style="width: 100%">
+      <el-table-column prop="id" label="工号" width="80"> </el-table-column>
+      <el-table-column prop="gender" label="性别" width="80"> </el-table-column>
+      <el-table-column prop="name" label="姓名" width="100"> </el-table-column>
+      <el-table-column prop="title" label="职称" width="100"> </el-table-column>
+      <el-table-column prop="college" label="院系名称" width="200"> </el-table-column>
+
       <el-table-column prop="telephone" label="手机号"> </el-table-column>
       <el-table-column prop="email" label="邮箱"> </el-table-column>
       <el-table-column prop="website" label="个人网站" width="180"> </el-table-column>
@@ -53,8 +55,13 @@
         </el-popconfirm>
       </template>
     </el-table-column>
-
     </el-table>
+
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="100">
+    </el-pagination>
   </div>
 </template>
 
