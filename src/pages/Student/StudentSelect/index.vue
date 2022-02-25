@@ -35,20 +35,20 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="conditionQuery">查询</el-button>
-        <el-button type="primary" @click="prevPage" v-show="pageIndex == 1 ">上一页</el-button>
-        <el-button type="primary" @click="nextPage" >下一页</el-button>
+        <el-button type="primary" @click="prevPage" v-show="pageIndex != 1"
+          >上一页</el-button
+        >
+        <el-button type="primary" @click="nextPage">下一页</el-button>
       </el-form-item>
     </el-form>
 
-
-
-    <el-table :data="TeacherList.slice(0,50)" border style="width: 100%">
+    <el-table :data="TeacherList" border style="width: 100%">
       <el-table-column prop="id" label="工号" width="80"> </el-table-column>
       <el-table-column prop="gender" label="性别" width="80"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="100"> </el-table-column>
       <el-table-column prop="title" label="职称" width="100"> </el-table-column>
-      <el-table-column prop="college" label="院系名称" width="200"> </el-table-column>
-
+      <el-table-column prop="college" label="院系名称" width="200">
+      </el-table-column>
 
       <el-table-column prop="telephone" label="手机号"> </el-table-column>
       <el-table-column prop="email" label="邮箱"> </el-table-column>
@@ -59,24 +59,15 @@
       <el-table-column prop="num" label="已选择人数" width="180">
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
-
-      <template>
-        <el-popconfirm
-          title="确定要申请吗？"
-        >
-          <el-button slot="reference">申请</el-button>
-        </el-popconfirm>
-      </template>
-    </el-table-column>
-
-
-
+        <template>
+          <el-popconfirm title="确定要申请吗？">
+            <el-button slot="reference">申请</el-button>
+          </el-popconfirm>
+        </template>
+      </el-table-column>
     </el-table>
 
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="100">
+    <el-pagination background layout="prev, pager, next" :total="100">
     </el-pagination>
   </div>
 </template>
@@ -100,6 +91,13 @@ export default {
   computed: {
     ...mapGetters(["TeacherList"]),
   },
+  mounted() {
+    this.$store.dispatch("getTeacherList", {
+      keyword: { college: null },
+      //page: 1,
+      size: 50,
+    });
+  },
   methods: {
     conditionQuery() {
       this.pageIndex = 1;
@@ -109,32 +107,25 @@ export default {
           college: this.formInline.college || null,
           title: this.formInline.title || null,
         },
-        page: 1,
+        //page: 1,
         size: 50,
       });
       console.log("query!");
     },
     prevPage() {
-      this.pageIndex-=1;
-      this.$store.dispatch("getTeacherList", {
-        keyword: {
-          name: this.formInline.name || null,
-          college: this.formInline.college || null,
-          title: this.formInline.title || null,
-        },
-        page: this.pageIndex,
-      });
+      this.pageIndex -= 1;
+      // if(this.pageIndex<1) this.pageIndex=1;
+      // this.$store.dispatch("getTeacherList", {
+      //   keyword: {
+      //     name: this.formInline.name || null,
+      //     college: this.formInline.college || null,
+      //     title: this.formInline.title || null,
+      //   },
+      //   page: this.pageIndex,
+      // });
     },
     nextPage() {
       this.pageIndex+=1;
-      this.$store.dispatch("getTeacherList", {
-        keyword: {
-          name: this.formInline.name || null,
-          college: this.formInline.college || null,
-          title: this.formInline.title || null,
-        },
-        page: this.pageIndex,
-      });
     },
   },
 };

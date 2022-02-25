@@ -86,7 +86,6 @@ export default {
   methods: {
     getData() {
       this.$store.dispatch("getStuInfo");
-      this.$store.dispatch("getTeacherList",{keyword:{college:this.StuInfo.college}});
     },
     logOut() {
       this.$store.dispatch("userLogout");
@@ -95,7 +94,6 @@ export default {
 
   computed: {
     ...mapGetters(["StuInfo"]),
-    ...mapGetters(["TeacherList"]),
   },
 };
 </script>
