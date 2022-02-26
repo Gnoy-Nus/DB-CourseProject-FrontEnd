@@ -141,6 +141,17 @@ export default {
           type: "select",
         });
         alert("successs");
+        this.$store.dispatch("getTeacherList", {
+          type: "search",
+          keyword: {
+            name: this.formInline.name || null,
+            college: this.formInline.college || null,
+            title: this.formInline.title || null,
+            field: this.formInline.field || null,
+          },
+          page: 1,
+          size: 50,
+        });
       } catch (error) {
         alert(error.message);
       }

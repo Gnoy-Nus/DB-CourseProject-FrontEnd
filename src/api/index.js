@@ -48,7 +48,14 @@ export const submitApply = (params) => {
     data: params,
   });
 }
-
+//向某个导师撤销申请
+export const cancelApply = (params) => {
+  return requests({
+    method: 'post',
+    url: `/student/show`,
+    data: params,
+  });
+}
 //查看已经申请的导师
 export const checkApplyingTutors = (params) => {
   return requests({

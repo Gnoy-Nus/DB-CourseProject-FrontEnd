@@ -6,7 +6,8 @@ import {
     changeStudentAccount,
     checkApplyingTutors,
     modStuInfo,
-    submitApply
+    submitApply,
+    cancelApply
 } from "@/api";
 
 //登录与注册的模块
@@ -103,7 +104,18 @@ const actions = {
             return Promise.reject(new Error(result.message));
         }
     },
-    
+    //撤销申请
+    async cancelTutorApply({ commit },data) {
+        console.log(data);
+        let result = await cancelApply(data);
+        console.log(result);
+        if (result.status == 1) {
+            console.log(result);
+            return 'ok';
+        } else {
+            return Promise.reject(new Error(result.message));
+        }
+    },
 };
 
 
