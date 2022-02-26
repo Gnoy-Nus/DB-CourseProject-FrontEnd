@@ -57,7 +57,6 @@
       <el-table-column prop="title" label="职称" width="100"> </el-table-column>
       <el-table-column prop="college" label="院系名称" width="150">
       </el-table-column>
-
       <el-table-column prop="telephone" label="手机号" width="140">
       </el-table-column>
       <el-table-column prop="email" label="邮箱" width="140"> </el-table-column>
