@@ -21,7 +21,6 @@ export const reqStuInfo = () => {
     }
   });
 }
-
 //修改学生用户信息
 export const modStuInfo = (params) => {
   return requests({
@@ -30,7 +29,6 @@ export const modStuInfo = (params) => {
     data: params,
   });
 }
-
 //按关键字检索导师 
 export const selectTutorKeyword = (params) => {
   return requests({
@@ -66,7 +64,6 @@ export const checkApplyingTutors = (params) => {
     }
   });
 }
-
 //修改学生账户密码
 export const changeStudentAccount = (params) => {
   return requests({
@@ -75,10 +72,7 @@ export const changeStudentAccount = (params) => {
     data: params,
   });
 }
-
-
-
-//以下未完成
+/*--------------------教师api分割线---------------- */
 //获取教师用户信息
 export const reqTeaInfo = () => {
   return requests({
@@ -90,7 +84,7 @@ export const reqTeaInfo = () => {
   });
 }
 
-//修改学生账户密码
+//修改教师账户密码
 export const changeTeacherAccount = (params) => {
   return requests({
     method: 'post',
@@ -99,13 +93,23 @@ export const changeTeacherAccount = (params) => {
   });
 }
 
-
-//修改学生用户信息
+//修改教师用户信息
 export const modTeaInfo = (params) => {
   return requests({
     method: 'post',
     url: `/teacher/info`,
     data: params,
+  });
+}
+
+//查看已经申请的学生
+export const checkApplyingStudents = (params) => {
+  return requests({
+    method: 'post',
+    url: `/teacher/show`,
+    data: {
+      type: "show"
+    }
   });
 }
 

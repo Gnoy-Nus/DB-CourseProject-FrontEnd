@@ -1,7 +1,7 @@
 <template>
   <div class="studentdata">
     <el-table
-      :data="tableData"
+      :data="APPLYLIST"
       border
       style="width: 100%">
       <el-table-column
@@ -64,7 +64,35 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      pageIndex: 1,
+    };
+  },
+  computed: {
+    ...mapGetters(["APPLYLIST"]),
+  },
+  mounted() {
+    console.log("start");
+    this.$store.dispatch("getApplyStudentList");
+  },
+  methods: {
+    async cancelApply(id) {
+      try {
+        await this.$store.dispatch("cancelTutorApply", {
+          id: id,
+          type: "select",
+        });
+        alert("successs");
+        this.$store.dispatch("getApplyTeacherList");
+      } catch (error) {
+        alert(error.message);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
