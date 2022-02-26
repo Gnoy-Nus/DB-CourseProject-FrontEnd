@@ -4,7 +4,7 @@
             <el-descriptions-item label="备注">
                 <el-tag>导师信息</el-tag>
             </el-descriptions-item>
-            <el-descriptions-item label="姓名">{{ TeacherList.name }}</el-descriptions-item>
+            <el-descriptions-item label="姓名">{{ TeaInfo.name }}</el-descriptions-item>
             <el-descriptions-item label="性别">{{ StuInfo.gender }}</el-descriptions-item>
             <el-descriptions-item label="出生日期">{{ StuInfo.birth }}</el-descriptions-item>
             <el-descriptions-item label="学院">{{ StuInfo.college }}</el-descriptions-item>
@@ -54,8 +54,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$store.dispatch("getStuInfo");
-      this.$store.dispatch("getTeacherList",{keyword:{college:this.StuInfo.college}});
+      this.$store.dispatch("getTeaInfo");
     },
     logOut() {
       this.$store.dispatch("userLogout");

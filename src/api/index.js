@@ -77,6 +77,9 @@ export const reqTeaInfo = () => {
   return requests({
     method: 'post',
     url: `/teacher/info`,
+    data: {
+      type: "show"
+    }
   });
 }
 

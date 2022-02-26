@@ -45,7 +45,7 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="TeacherList" border style="width: 100%" >
+    <el-table :data="TeacherList" border style="width: 100%">
       <el-table-column prop="id" label="工号" width="80"> </el-table-column>
       <el-table-column prop="gender" label="性别" width="80"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="100"> </el-table-column>
@@ -67,8 +67,11 @@
       <el-table-column prop="max_num" label="上限人数" width="80">
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
-        <template>
-          <el-popconfirm title="确定要申请吗？" @onConfirm="submitApply(id)">
+        <template slot-scope="scope">
+          <el-popconfirm
+            title="确定要申请吗？"
+            @confirm="submitApply(scope.row.id)"
+          >
             <el-button slot="reference">申请</el-button>
           </el-popconfirm>
         </template>
@@ -118,6 +121,7 @@ export default {
           name: this.formInline.name || null,
           college: this.formInline.college || null,
           title: this.formInline.title || null,
+          field: this.formInline.field || null,
         },
         page: 1,
         size: 50,
@@ -129,15 +133,18 @@ export default {
     },
     nextPage() {
       this.pageIndex += 1;
-     
     },
-    submitApply(id){
-      //  this.$store.dispatch("submitTutorApply", {
-      //   id: id,
-      //   type:"select"
-      // });
-      console.log(id);
-    }
+    async submitApply(id) {
+      try {
+        await this.$store.dispatch("submitTutorApply", {
+          id: id,
+          type: "select",
+        });
+        alert("successs");
+      } catch (error) {
+        alert(error.message);
+      }
+    },
   },
 };
 </script>
