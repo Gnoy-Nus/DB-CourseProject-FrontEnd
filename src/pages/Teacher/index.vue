@@ -7,7 +7,7 @@
           <div
             id="divstuinfo"
             class="ui-accordion-header ui-helper-reset ui-state-default"
-            style="padding: 1px 0px 0px 2px"
+            style="padding: 50px 0px 0px 2px"
           >
             <span style="font-weight: bold"> 教师信息</span>
             <div style="line-height: 23px">工号：{{ TeaInfo.id }}</div>
