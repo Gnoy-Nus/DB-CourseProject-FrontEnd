@@ -5,12 +5,15 @@ import {
     changeTeacherAccount,
     modTeaInfo,
     checkApplyingStudents,
+    manageApplyingStudents,
+    checkOwnedStudents
 } from "@/api";
 
 //登录与注册的模块
 const state = {
     teaInfo: {},
     applyList: [],
+    ownStudentList:[]
 };
 
 //mutations:修改state的唯一手段
@@ -20,6 +23,9 @@ const mutations = {
     },
     APPLY_TLIST(state, result) {
         state.applyList = result;
+    },
+    OWNED_TLIST(state, result) {
+        state.ownStudentList = result;
     },
 };
 
@@ -72,6 +78,30 @@ const actions = {
             return Promise.reject(new Error(result.message));
         }
     },
+    //管理学生提交的申请
+    async manageStuApply({ commit }, data) {
+        console.log(data);
+        let result = await manageApplyingStudents(data);
+        console.log(result);
+        if (result.status == 1) {
+            console.log(result);
+            return 'ok';
+        } else {
+            return Promise.reject(new Error(result.message));
+        }
+    },
+    //获取已在门下的学生列表
+    async getOwnedStudentList({ commit }) {
+        let result = await checkOwnedStudents();
+        console.log(result);
+        if (result.status == 1) {
+            //用户已经登录成功且获取到token
+            commit("OWNED_TLIST", result.data);
+            return "ok";
+        } else {
+            return Promise.reject(new Error(result.message));
+        }
+    },
 };
 
 
@@ -83,6 +113,9 @@ const getters = {
     },
     APPLYLIST(state) {
         return state.applyList || [];
+    },
+    OwnStudentList(state){
+        return state.ownStudentList||[];
     }
 };
 

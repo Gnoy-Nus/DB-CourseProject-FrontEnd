@@ -113,7 +113,26 @@ export const checkApplyingStudents = (params) => {
   });
 }
 
+//管理已经申请的学生
+export const manageApplyingStudents = (params) => {
+  return requests({
+    method: 'post',
+    url: `/teacher/show`,
+    data: params
+  });
+}
 
+//查看已在门下的学生
+
+export const checkOwnedStudents = (params) => {
+  return requests({
+    method: 'post',
+    url: `/teacher/selected`,
+    data: {
+      type: "show"
+    }
+  });
+}
 
 
 
