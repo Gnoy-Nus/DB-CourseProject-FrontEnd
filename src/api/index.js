@@ -90,26 +90,28 @@ export const reqTeaInfo = () => {
   });
 }
 
+//修改学生账户密码
+export const changeTeacherAccount = (params) => {
+  return requests({
+    method: 'post',
+    url: `/teacher/account`,
+    data: params,
+  });
+}
+
 
 //修改学生用户信息
-export const alterStuInfo = (params) => {
+export const modTeaInfo = (params) => {
   return requests({
     method: 'post',
-    url: `/student/info`,
-    data: params
+    url: `/teacher/info`,
+    data: params,
   });
 }
 
 
 
-//向某个导师发送申请
-export const TutorRequest = (params) => {
-  return requests({
-    method: 'post',
-    url: `/student/select`,
-    tid: params
-  });
-}
+
 
 
 

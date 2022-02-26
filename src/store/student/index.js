@@ -13,8 +13,9 @@ import {
 //登录与注册的模块
 const state = {
     stuInfo: {},
-    teacherList:[],
-    selectedTeacherList:[]
+    teacherList: [],
+    selectedTeacherList: [],
+    pageLength: 1
 };
 
 //mutations:修改state的唯一手段
@@ -28,6 +29,9 @@ const mutations = {
     SELECTED_TLIST(state, result) {
         state.selectedTeacherList = result;
     },
+    PAGE_LENGTH(state, result) {
+        state.pageLength = result;
+    }
 };
 
 const actions = {
@@ -43,7 +47,7 @@ const actions = {
         }
     },
     //修改用户信息
-    async changeStuInfo({ commit },data) {
+    async changeStuInfo({ commit }, data) {
         console.log(data);
         let result = await modStuInfo(data);
         console.log(result);
@@ -55,7 +59,7 @@ const actions = {
         }
     },
     //递交导师申请
-    async submitTutorApply({ commit },data) {
+    async submitTutorApply({ commit }, data) {
         console.log(data);
         let result = await submitApply(data);
         console.log(result);
@@ -67,20 +71,21 @@ const actions = {
         }
     },
     //获取导师信息表
-    async getTeacherList({ commit },data) {
+    async getTeacherList({ commit }, data) {
         console.log(data);
         let result = await selectTutorKeyword(data);
         console.log(result);
         if (result.status == 1) {
             //用户已经登录成功且获取到token
             commit("TEACHER_LIST", result.data);
+            commit("PAGE_LENGTH",result.length);
             return "ok";
         } else {
             return Promise.reject(new Error(result.message));
         }
     },
     //更改账户密码
-    async changeAccountPwd({ commit },data) {
+    async changeAccountPwd({ commit }, data) {
         console.log(data);
         let result = await changeStudentAccount(data);
         console.log(result);
@@ -105,7 +110,7 @@ const actions = {
         }
     },
     //撤销申请
-    async cancelTutorApply({ commit },data) {
+    async cancelTutorApply({ commit }, data) {
         console.log(data);
         let result = await cancelApply(data);
         console.log(result);
@@ -125,11 +130,14 @@ const getters = {
     StuInfo(state) {
         return state.stuInfo || {};
     },
-    TeacherList(state){
-        return state.teacherList||[];
+    TeacherList(state) {
+        return state.teacherList || [];
     },
-    SelectedTeacherList(state){
+    SelectedTeacherList(state) {
         return state.selectedTeacherList || [];
+    },
+    PageLength(state) {
+        return state.pageLength;
     }
 };
 

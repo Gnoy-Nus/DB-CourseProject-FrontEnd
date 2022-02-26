@@ -2,6 +2,8 @@
 
 import {
     reqTeaInfo,
+    changeTeacherAccount,
+    modTeaInfo,
 } from "@/api";
 
 //登录与注册的模块
@@ -25,7 +27,32 @@ const actions = {
             console.log(result);
             return 'ok';
         } else {
-            return Promise.reject(new Error('faile'));
+            return Promise.reject(new Error(result.message));
+        }
+    },
+    //更改账户密码
+    async T_changeAccountPwd({ commit }, data) {
+        console.log(data);
+        let result = await changeTeacherAccount(data);
+        console.log(result);
+        if (result.status == 1) {
+            //用户已经登录成功且获取到token
+            console.log("ok");
+            return "ok";
+        } else {
+            return Promise.reject(new Error(result.message));
+        }
+    },
+    //修改用户信息
+    async  changeTeaInfo({ commit }, data) {
+        console.log(data);
+        let result = await modTeaInfo(data);
+        console.log(result);
+        if (result.status == 1) {
+            console.log(result);
+            return 'ok';
+        } else {
+            return Promise.reject(new Error(result.message));
         }
     },
 };

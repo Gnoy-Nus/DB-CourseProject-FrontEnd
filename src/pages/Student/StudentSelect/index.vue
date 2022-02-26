@@ -104,6 +104,7 @@ export default {
     ...mapGetters(["TeacherList"]),
   },
   mounted() {
+    //页面加载获取初始数据
     console.log("start");
     this.$store.dispatch("getTeacherList", {
       type: "search",
@@ -114,6 +115,7 @@ export default {
   },
   methods: {
     conditionQuery() {
+      //按条件查询
       this.pageIndex = 1;
       this.$store.dispatch("getTeacherList", {
         type: "search",
@@ -129,12 +131,15 @@ export default {
       console.log("query!");
     },
     prevPage() {
+      //前一页
       this.pageIndex -= 1;
     },
     nextPage() {
+      //后一页
       this.pageIndex += 1;
     },
     async submitApply(id) {
+      //递交申请
       try {
         await this.$store.dispatch("submitTutorApply", {
           id: id,
