@@ -83,7 +83,14 @@
       </el-table-column>
     </el-table>
 
-    <el-pagination background layout="prev, pager, next" :total="PageLength*10">
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="PageLength * 10"
+      @prev-click="prevPage"
+      @next-click="nextPage"
+      @current-change="handleCurrentChange"
+    >
     </el-pagination>
   </div>
 </template>
@@ -154,6 +161,21 @@ export default {
     nextPage() {
       //后一页
       this.pageIndex += 1;
+      this.$store.dispatch("getTeacherList", {
+        type: "search",
+        keyword: {
+          name: this.formInline.name || null,
+          college: this.formInline.college || null,
+          title: this.formInline.title || null,
+          field: this.formInline.field || null,
+        },
+        page: this.pageIndex,
+        size: 50,
+      });
+    },
+    handleCurrentChange(val) {
+      // console.log(`当前页: ${val}`);
+      this.pageIndex = val;
       this.$store.dispatch("getTeacherList", {
         type: "search",
         keyword: {
