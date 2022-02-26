@@ -40,8 +40,13 @@
         <el-button type="primary" @click="conditionQuery">查询</el-button>
         <el-button type="primary" @click="prevPage" v-show="pageIndex != 1"
           >上一页</el-button
+        >{{ pageIndex }}/{{ PageLength }}
+        <el-button
+          type="primary"
+          @click="nextPage"
+          v-show="pageIndex < PageLength"
+          >下一页</el-button
         >
-        <el-button type="primary" @click="nextPage">下一页</el-button>
       </el-form-item>
     </el-form>
 
@@ -78,7 +83,7 @@
       </el-table-column>
     </el-table>
 
-    <el-pagination background layout="prev, pager, next" :total="100">
+    <el-pagination background layout="prev, pager, next" :total="PageLength*10">
     </el-pagination>
   </div>
 </template>
@@ -102,6 +107,7 @@ export default {
   },
   computed: {
     ...mapGetters(["TeacherList"]),
+    ...mapGetters(["PageLength"]),
   },
   mounted() {
     //页面加载获取初始数据
@@ -133,10 +139,32 @@ export default {
     prevPage() {
       //前一页
       this.pageIndex -= 1;
+      this.$store.dispatch("getTeacherList", {
+        type: "search",
+        keyword: {
+          name: this.formInline.name || null,
+          college: this.formInline.college || null,
+          title: this.formInline.title || null,
+          field: this.formInline.field || null,
+        },
+        page: this.pageIndex,
+        size: 50,
+      });
     },
     nextPage() {
       //后一页
       this.pageIndex += 1;
+      this.$store.dispatch("getTeacherList", {
+        type: "search",
+        keyword: {
+          name: this.formInline.name || null,
+          college: this.formInline.college || null,
+          title: this.formInline.title || null,
+          field: this.formInline.field || null,
+        },
+        page: this.pageIndex,
+        size: 50,
+      });
     },
     async submitApply(id) {
       //递交申请
@@ -146,6 +174,7 @@ export default {
           type: "select",
         });
         alert("successs");
+        this.pageIndex = 1;
         this.$store.dispatch("getTeacherList", {
           type: "search",
           keyword: {
@@ -157,6 +186,7 @@ export default {
           page: 1,
           size: 50,
         });
+        location.reload();
       } catch (error) {
         alert(error.message);
       }

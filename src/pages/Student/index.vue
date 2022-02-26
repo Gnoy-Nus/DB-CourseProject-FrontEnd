@@ -96,6 +96,7 @@ export default {
 
   computed: {
     ...mapGetters(["StuInfo"]),
+
   },
 };
 </script>
