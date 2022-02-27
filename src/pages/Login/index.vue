@@ -6,14 +6,14 @@
         <div class="register-box hidden">
           <h1>login</h1>
           <input type="text" placeholder="工号" v-model="tea_id" />
-          <input type="password" placeholder="密码" v-model="tea_pwd" />
+          <input type="password" placeholder="密码" v-model="tea_pwd" @keydown.13='teacherLogin' />
           <button @click.prevent="teacherLogin">登录</button>
         </div>
         <!-- 学生登录页面 -->
         <div class="login-box">
           <h1>login</h1>
           <input type="text" placeholder="学号" v-model="stu_id" />
-          <input type="password" placeholder="密码" v-model="stu_pwd" />
+          <input type="password" placeholder="密码" v-model="stu_pwd" @keydown.13='studentLogin'/>
           <button @click.prevent="studentLogin">登录</button>
         </div>
       </div>
@@ -46,6 +46,9 @@ export default {
     };
   },
   methods: {
+    enterEvent(){
+      console.log("OK");
+    },
     //换成学生的登录页面切换
     LoginS() {
       var login_box = document.getElementsByClassName("login-box")[0];
