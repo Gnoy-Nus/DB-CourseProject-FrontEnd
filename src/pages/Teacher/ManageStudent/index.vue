@@ -1,17 +1,17 @@
 <template>
   <div class="studentdata">
     <el-table :data="OwnStudentList" border style="width: 100%">
-      <el-table-column prop="id" label="学号" width="180"> </el-table-column>
-      <el-table-column prop="gender" label="性别"> </el-table-column>
-      <el-table-column prop="name" label="姓名"> </el-table-column>
-      <el-table-column prop="college" label="院系"> </el-table-column>
-      <el-table-column prop="major" label="专业"> </el-table-column>
-      <el-table-column prop="telephone" label="手机号"> </el-table-column>
-      <el-table-column prop="email" label="邮箱"> </el-table-column>
-      <el-table-column prop="website" label="个人网站"> <template slot-scope="scope1">
+      <el-table-column prop="id" label="学号" width="180" align="center"> </el-table-column>
+      <el-table-column prop="gender" label="性别" align="center"> </el-table-column>
+      <el-table-column prop="name" label="姓名" align="center"> </el-table-column>
+      <el-table-column prop="college" label="院系" align="center"> </el-table-column>
+      <el-table-column prop="major" label="专业" align="center"> </el-table-column>
+      <el-table-column prop="telephone" label="手机号" align="center"> </el-table-column>
+      <el-table-column prop="email" label="邮箱" align="center"> </el-table-column>
+      <el-table-column prop="website" label="个人网站" align="center"> <template slot-scope="scope1">
           <el-link :href="scope1.row.website" target="_blank">{{ scope1.row.website }}</el-link>
-        </template></el-table-column</el-table-column>
-      <el-table-column prop="info" label="个人介绍"> </el-table-column>
+        </template></el-table-column>
+      <el-table-column prop="info" label="个人介绍" align="center"> </el-table-column>
     </el-table>
   </div>
 </template>

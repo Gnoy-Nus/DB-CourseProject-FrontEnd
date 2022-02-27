@@ -35,7 +35,7 @@
         >
         <el-input
           type="textarea"
-          :rows="4"
+          :rows="8"
           placeholder="请输入内容"
           v-model="StuInfo.info"
         >
@@ -44,7 +44,7 @@
     </el-descriptions>
 
     <el-row>
-      <el-button type="primary" @click="submitForm">保存提交</el-button>
+      <el-button type="success" @click="submitForm">保存提交</el-button>
       <el-button type="danger">重置</el-button>
     </el-row>
   </div>
