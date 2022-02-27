@@ -60,7 +60,9 @@
       <el-table-column prop="telephone" label="手机号" width="140">
       </el-table-column>
       <el-table-column prop="email" label="邮箱" width="140"> </el-table-column>
-      <el-table-column prop="website" label="个人网站" width="140">
+      <el-table-column prop="website" label="个人网站" width="140"><template slot-scope="scope1">
+          <el-link :href="scope1.row.website" target="_blank">{{ scope1.row.website }}</el-link>
+        </template></el-table-column
       </el-table-column>
       <el-table-column prop="field" label="科研方向" width="140">
       </el-table-column>
