@@ -16,12 +16,12 @@
       <el-table-column prop="field" label="科研方向" width="300" align="center"> </el-table-column>
       <el-table-column prop="status" label="状态" width="65" align="center"> </el-table-column>
       <el-table-column fixed="right" label="操作" width="150" align="center">
-        <template slot-scope="scope">
-          <el-popconfirm
+        <template slot-scope="scope" >
+          <el-popconfirm 
             title="确定要撤销申请吗？"
             @confirm="cancelApply(scope.row.id)"
           >
-            <el-button slot="reference" type="danger">撤销申请</el-button>
+            <el-button :disabled="scope.row.status!='申请中'" slot="reference" type="danger">撤销申请</el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
