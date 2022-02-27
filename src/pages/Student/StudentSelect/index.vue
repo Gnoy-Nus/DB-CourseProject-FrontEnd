@@ -51,34 +51,38 @@
     </el-form>
 
     <el-table :data="TeacherList" border style="width: 100%">
-      <el-table-column prop="id" label="工号" width="80"> </el-table-column>
-      <el-table-column prop="gender" label="性别" width="80"> </el-table-column>
-      <el-table-column prop="name" label="姓名" width="100"> </el-table-column>
-      <el-table-column prop="title" label="职称" width="100"> </el-table-column>
-      <el-table-column prop="college" label="院系名称" width="150">
+      <el-table-column prop="id" label="工号" width="65" align="center"> </el-table-column>
+      <el-table-column prop="gender" label="性别" width="65" align="center"> </el-table-column>
+      <el-table-column prop="name" label="姓名" width="70" align="center"> </el-table-column>
+      <el-table-column prop="title" label="职称" width="65" align="center"> </el-table-column>
+      <el-table-column prop="college" label="院系名称" width="165" align="center">
       </el-table-column>
-      <el-table-column prop="telephone" label="手机号" width="140">
+      <el-table-column prop="telephone" label="手机号" width="110" align="center">
       </el-table-column>
-      <el-table-column prop="email" label="邮箱" width="140"> </el-table-column>
-      <el-table-column prop="website" label="个人网站" width="140"><template slot-scope="scope1">
+      <el-table-column prop="email" label="邮箱" width="140" align="center"> </el-table-column>
+      <el-table-column prop="website" label="个人网站" width="200" align="center"><template slot-scope="scope1">
           <el-link :href="scope1.row.website" target="_blank">{{ scope1.row.website }}</el-link>
-        </template></el-table-column
+        </template></el-table-column>
+      <el-table-column prop="field" label="科研方向" width="275" align="center">
       </el-table-column>
-      <el-table-column prop="field" label="科研方向" width="140">
+      <el-table-column prop="apply_num" label="申请人数" width="80" align="center">
       </el-table-column>
-      <el-table-column prop="apply_num" label="申请人数" width="80">
+      <el-table-column prop="accept_num" label="已有学生" width="80" align="center">
+        <template slot-scope="scope">
+          <span v-if="scope.row.accept_num===4 " style="color: #E6A23C">{{scope.row.accept_num}}</span>
+          <span v-else-if="scope.row.accept_num===5 " style="color: #F56C6C">{{scope.row.accept_num}}</span>
+          <span v-else style="color: blue">{{scope.row.accept_num}}</span>
+        </template>
       </el-table-column>
-      <el-table-column prop="accept_num" label="已有学生" width="80">
+      <el-table-column prop="max_num" label="上限人数" width="80" align="center">
       </el-table-column>
-      <el-table-column prop="max_num" label="上限人数" width="80">
-      </el-table-column>
-      <el-table-column fixed="right" label="操作" width="150">
+      <el-table-column fixed="right" label="操作" align="center">
         <template slot-scope="scope">
           <el-popconfirm
             title="确定要申请吗？"
             @confirm="submitApply(scope.row.id)"
           >
-            <el-button slot="reference">申请</el-button>
+            <el-button slot="reference" type="success">申请</el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
@@ -227,5 +231,6 @@ export default {
   min-height: 90%;
   width: 1500px;
 }
+
 </style>
 
