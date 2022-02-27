@@ -30,7 +30,7 @@
 
         <el-row>
             <el-button type="success" @click="submitForm">保存提交</el-button>
-            <el-button type="danger">重置</el-button>
+            <el-button type="danger" @click="resetForm">重置</el-button>
         </el-row>
   </div>
 </template>
@@ -62,6 +62,12 @@ export default {
       } catch (error) {
         alert(error.message);
       }
+    },
+    resetForm() {
+      this.TeaInfo.telephone="",
+      this.TeaInfo.email="",
+      this.TeaInfo.website="",
+      this.TeaInfo.field=""
     },
   },
 
