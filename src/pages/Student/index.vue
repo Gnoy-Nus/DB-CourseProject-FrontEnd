@@ -145,6 +145,7 @@ export default {
   height: 90%;
   overflow: auto;
   z-index: 1;
+  background-color: rgb(236, 235, 235);
 }
 
 .sidebar {

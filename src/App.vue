@@ -22,3 +22,9 @@ export default {
   color: #2c3e50;
 }
 </style>
+
+<style>
+.el-table tbody tr:hover>td { 
+    background-color:rgb(148,215,254) !important;
+}
+</style>
