@@ -18,10 +18,10 @@
             <div style="line-height: 23px">专业：{{ StuInfo.major }}</div>
 
             <br />
-            <div style="color: Red; font-weight: bold; line-height: 23px">
+            <div style="color: indianred; font-weight: bold; line-height: 23px">
               完成操作后请点击&nbsp;<a
                 href="#/login"
-                style="color: Red"
+                style="color: blue"
                 @click="logOut"
                 >[安全退出]</a
               >

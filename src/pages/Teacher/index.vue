@@ -16,10 +16,10 @@
             <div style="line-height: 23px">姓名：{{ TeaInfo.name }}</div>
             <div style="line-height: 23px">学院：{{ TeaInfo.college }}</div>
             <br />
-            <div style="color: Red; font-weight: bold; line-height: 23px">
+            <div style="color: indianred; font-weight: bold; line-height: 23px">
               完成操作后请点击&nbsp;<a
                 href="#/login"
-                style="color: Red"
+                style="color: red"
                 @click="logOut"
                 >[安全退出]</a
               >
