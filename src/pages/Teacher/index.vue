@@ -3,35 +3,42 @@
     <Header></Header>
     <aside class="main-sidebar">
       <section class="sidebar">
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul class="sidebar-menu" align="left">
           <div
-            id="divstuinfo"
-            class="ui-accordion-header ui-helper-reset ui-state-default"
-            style="padding: 50px 0px 0px 2px"
+            style="
+              padding: 50px 0px 0px 2px;
+              background: #8ac3f0 50% 50% repeat-x;
+              color: black;
+            "
           >
             <span style="font-weight: bold"> 教师信息</span>
             <div style="line-height: 23px">工号：{{ TeaInfo.id }}</div>
             <div style="line-height: 23px">姓名：{{ TeaInfo.name }}</div>
             <div style="line-height: 23px">学院：{{ TeaInfo.college }}</div>
+            <br />
             <div style="color: Red; font-weight: bold; line-height: 23px">
-              完成操作后请点击&nbsp;<a href="#/login" style="color: Red" @click="logOut"
+              完成操作后请点击&nbsp;<a
+                href="#/login"
+                style="color: Red"
+                @click="logOut"
                 >[安全退出]</a
               >
             </div>
+            <br />
+            <br />
           </div>
 
-          <li name="menuapptype" id="menuapptype0" class="treeview">
+          <li>
             <ul class="treeview-menu">
               <el-row class="tac">
                 <el-col :span="100">
                   <el-menu
                     default-active="2"
                     class="el-menu-vertical-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
                     background-color="#2c3e50"
                     text-color="#fff"
-                    active-text-color="#ffd04b">
+                    active-text-color="#ffd04b"
+                  >
                     <el-submenu index="1">
                       <template slot="title">
                         <i class="el-icon-location"></i>
@@ -39,22 +46,26 @@
                       </template>
                       <el-menu-item-group>
                         <router-link to="/teacher/ManageStudent">
-                        <el-menu-item index="1-1">管理学生</el-menu-item>
+                          <el-menu-item index="1-1">管理学生</el-menu-item>
                         </router-link>
                         <router-link to="/teacher/CheckStudentRequests">
-                        <el-menu-item index="1-2">查看申请中的学生</el-menu-item>
+                          <el-menu-item index="1-2"
+                            >查看申请中的学生</el-menu-item
+                          >
                         </router-link>
                         <router-link to="/teacher/TeacherModify">
-                        <el-menu-item index="1-3">查看/修改个人信息</el-menu-item>
+                          <el-menu-item index="1-3"
+                            >查看/修改个人信息</el-menu-item
+                          >
                         </router-link>
                         <router-link to="/teacher/TeacherAccount">
-                        <el-menu-item index="1-4">账号管理</el-menu-item>
+                          <el-menu-item index="1-4">账号管理</el-menu-item>
                         </router-link>
                       </el-menu-item-group>
                     </el-submenu>
                   </el-menu>
                 </el-col>
-              </el-row>  
+              </el-row>
             </ul>
           </li>
         </ul>
@@ -75,12 +86,9 @@ import { mapState, mapGetters } from "vuex";
 export default {
   name: "",
   data() {
-    return {
-       
-    };
+    return {};
   },
-  beforeMount() {
-  },
+  beforeMount() {},
   mounted() {
     this.getData();
   },
@@ -131,7 +139,7 @@ export default {
 .content-wrapper {
   color: black;
   background-color: rgb(240, 241, 255);
-  overflow:auto;
+  overflow: auto;
   height: 95%;
   z-index: 1;
 }

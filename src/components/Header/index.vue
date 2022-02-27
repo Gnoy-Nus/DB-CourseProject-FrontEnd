@@ -17,7 +17,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #08acee;
+  background-color: #3c8dbc;
   position: relative;
   max-height: 100px;
   z-index: 3;
@@ -25,7 +25,7 @@ export default {
 
 .logo {
   padding-top: 0;
-  right: 850px;
+  left: -600px;
   position: relative;
 }
 

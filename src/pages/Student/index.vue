@@ -3,17 +3,21 @@
     <Header></Header>
     <aside class="main-sidebar">
       <section class="sidebar">
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul class="sidebar-menu" align="left">
           <div
-            id="divstuinfo"
-            class="ui-accordion-header ui-helper-reset ui-state-default"
-            style="padding: 50px 0px 0px 2px"
+            style="
+              padding: 50px 0px 0px 2px;
+              background: #8ac3f0 50% 50% repeat-x;
+              color: black;
+            "
           >
             <span style="font-weight: bold"> 学生信息</span>
             <div style="line-height: 23px">学号：{{ StuInfo.id }}</div>
             <div style="line-height: 23px">姓名：{{ StuInfo.name }}</div>
             <div style="line-height: 23px">学院：{{ StuInfo.college }}</div>
             <div style="line-height: 23px">专业：{{ StuInfo.major }}</div>
+
+            <br />
             <div style="color: Red; font-weight: bold; line-height: 23px">
               完成操作后请点击&nbsp;<a
                 href="#/login"
@@ -21,21 +25,23 @@
                 @click="logOut"
                 >[安全退出]</a
               >
+              <br />
+
+              <br />
             </div>
           </div>
 
-          <li name="menuapptype" class="treeview">
-            <ul class="treeview-menu">
+          <li>
+            <ul>
               <el-row class="tac">
                 <el-col :span="100">
                   <el-menu
                     default-active="2"
                     class="el-menu-vertical-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
                     background-color="#2c3e50"
                     text-color="#fff"
-                    active-text-color="#ffd04b">
+                    active-text-color="#ffd04b"
+                  >
                     <el-submenu index="1">
                       <template slot="title">
                         <i class="el-icon-location"></i>
@@ -43,22 +49,26 @@
                       </template>
                       <el-menu-item-group>
                         <router-link to="/student/StudentSelect">
-                        <el-menu-item index="1-1">选择导师</el-menu-item>
+                          <el-menu-item index="1-1">选择导师</el-menu-item>
                         </router-link>
                         <router-link to="/student/StudentCheck">
-                        <el-menu-item index="1-2">查看已申请的导师</el-menu-item>
+                          <el-menu-item index="1-2"
+                            >查看已申请的导师</el-menu-item
+                          >
                         </router-link>
                         <router-link to="/student/StudentModify">
-                        <el-menu-item index="1-3">查看/修改个人信息</el-menu-item>
+                          <el-menu-item index="1-3"
+                            >查看/修改个人信息</el-menu-item
+                          >
                         </router-link>
                         <router-link to="/student/StudentAccount">
-                        <el-menu-item index="1-4">账号管理</el-menu-item>
+                          <el-menu-item index="1-4">账号管理</el-menu-item>
                         </router-link>
                       </el-menu-item-group>
                     </el-submenu>
                   </el-menu>
                 </el-col>
-              </el-row>  
+              </el-row>
             </ul>
           </li>
         </ul>
@@ -96,7 +106,6 @@ export default {
 
   computed: {
     ...mapGetters(["StuInfo"]),
-
   },
 };
 </script>
