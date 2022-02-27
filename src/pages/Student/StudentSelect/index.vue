@@ -82,7 +82,7 @@
             title="确定要申请吗？"
             @confirm="submitApply(scope.row.id)"
           >
-            <el-button slot="reference" type="success">申请</el-button>
+            <el-button :disabled="scope.row.accept_num>=scope.row.max_num"slot="reference" type="success">申请</el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
