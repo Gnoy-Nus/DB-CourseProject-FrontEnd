@@ -19,20 +19,19 @@
       <el-descriptions-item label="专业">{{
         StuInfo.major
       }}</el-descriptions-item>
-      <el-descriptions-item label="手机号"
-        >
-        <el-input v-model="StuInfo.telephone" placeholder="请输入内容"></el-input>
+      <el-descriptions-item label="手机号">
+        <el-input
+          v-model="StuInfo.telephone"
+          placeholder="请输入内容"
+        ></el-input>
       </el-descriptions-item>
-      <el-descriptions-item label="邮箱"
-        >
+      <el-descriptions-item label="邮箱">
         <el-input v-model="StuInfo.email" placeholder="请输入内容"></el-input>
       </el-descriptions-item>
-      <el-descriptions-item label="个人网站"
-        >
+      <el-descriptions-item label="个人网站">
         <el-input v-model="StuInfo.website" placeholder="请输入内容"></el-input>
       </el-descriptions-item>
-      <el-descriptions-item label="个人介绍"
-        >
+      <el-descriptions-item label="个人介绍">
         <el-input
           type="textarea"
           :rows="8"
@@ -55,8 +54,7 @@ import { mapState, mapGetters } from "vuex";
 export default {
   name: "",
   data() {
-    return {
-    };
+    return {};
   },
   mounted() {
     this.$store.dispatch("getStuInfo");
@@ -71,7 +69,7 @@ export default {
             website: this.StuInfo.website || null,
             info: this.StuInfo.info || null,
           },
-          type:"modify"
+          type: "modify",
         });
         alert("successs");
       } catch (error) {
@@ -79,10 +77,10 @@ export default {
       }
     },
     resetForm() {
-      this.StuInfo.telephone="",
-      this.StuInfo.email="",
-      this.StuInfo.website="",
-      this.StuInfo.info=""
+      (this.StuInfo.telephone = ""),
+        (this.StuInfo.email = ""),
+        (this.StuInfo.website = ""),
+        (this.StuInfo.info = "");
     },
   },
 
@@ -95,10 +93,11 @@ export default {
 <style scoped>
 .StudentInfoList {
   position: relative;
-  top: 0px;
-  left: 250px;
-  padding-top: 100px;
+  padding-top: 2.5%;
+  left: 2.5%;
+  right: 2.5%;
   min-height: 100%;
-  width: 1500px;
+  width: 95%;
+  overflow: auto;
 }
 </style>

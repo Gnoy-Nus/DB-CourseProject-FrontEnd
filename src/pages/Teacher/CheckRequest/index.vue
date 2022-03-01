@@ -1,7 +1,7 @@
 <template>
   <div class="studentdata">
     <el-table :data="APPLYLIST" border style="width: 100%">
-      <el-table-column prop="id" label="学号" width="180" align="center"> </el-table-column>
+      <el-table-column prop="id" label="学号"  align="center"> </el-table-column>
       <el-table-column prop="gender" label="性别" align="center"> </el-table-column>
       <el-table-column prop="name" label="姓名" align="center"> </el-table-column>
       <el-table-column prop="college" label="院系" align="center"> </el-table-column>
@@ -12,7 +12,7 @@
           <el-link :href="scope1.row.website" target="_blank">{{ scope1.row.website }}</el-link>
         </template></el-table-column>
       <el-table-column prop="info" label="个人介绍" align="center"> </el-table-column>
-      <el-table-column fixed="right" label="操作" width="150" align="center">
+      <el-table-column fixed="right" label="操作"  align="center">
         <template slot-scope="scope">
           <el-popconfirm
             title="确定要接收吗？"
@@ -83,10 +83,11 @@ export default {
 .studentdata {
   position: relative;
   top: 0;
-  left: 250px;
-  padding-top: 50px;
   min-height: 90%;
-  width: 1500px;
+  left: 2.5%;
+  right: 2.5%;
+  padding-top: 50px;
+  width: 95%;
   overflow: auto;
 }
 </style>

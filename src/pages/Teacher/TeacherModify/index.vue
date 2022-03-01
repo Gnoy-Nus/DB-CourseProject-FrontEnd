@@ -81,11 +81,12 @@ export default {
 
 .StudentInfoList {
   position: relative;
-  top: 0px;
-  left: 250px;
-  padding-top: 100px;
+  padding-top: 2.5%;
+  left: 2.5%;
+  right: 2.5%;
   min-height: 100%;
-  width: 1500px;
+  width: 95%;
+  overflow: auto;
 }
 
 </style>

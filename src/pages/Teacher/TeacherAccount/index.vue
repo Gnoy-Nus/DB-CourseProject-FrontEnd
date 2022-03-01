@@ -96,11 +96,12 @@ export default {
 
 <style scoped>
 .password {
-  top: 100px;
-  left: 250px;
-  padding-top: 100px;
+  position: relative;
+  padding-top: 15%;
+  left: 20%;
+  right: 20%;
   min-height: 100%;
-  width: 500px;
-  margin: auto;
+  width: 50%;
+  overflow: auto;
 }
 </style>

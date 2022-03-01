@@ -1,12 +1,16 @@
 <template>
-  <div class="wrapper">
+  <div>
+    <!-- <div class="header">
+      <img class="logo" src="./img/logo-white.png" alt="" />
+      <h1 class="title">导师学生双向选择系统</h1>
+    </div> -->
     <Header></Header>
-    <aside class="main-sidebar">
-      <section class="sidebar">
-        <ul class="sidebar-menu" align="left">
+    <div class="navbar">
+      <section>
+        <ul align="left">
           <div
             style="
-              padding: 50px 0px 0px 2px;
+              padding: 30px 0px 0px 2px;
               background: #8ac3f0 50% 50% repeat-x;
               color: black;
             "
@@ -73,11 +77,9 @@
           </li>
         </ul>
       </section>
-    </aside>
-
-    <!-- content路由出口 -->
-    <div class="wrapper">
-      <div class="content-wrapper">
+    </div>
+    <div class="main">
+      <div>
         <router-view></router-view>
       </div>
     </div>
@@ -111,62 +113,58 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  margin: 0;
-  padding: 0;
-  /* 100%窗口高度 */
-  height: 100vh;
-  /* 渐变背景 */
-  /*background: linear-gradient(200deg, #f3e8e7, #ebffe3);*/
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  /*字体：白色 */
-  color: white;
-}
-
-.main-sidebar {
-  background-color: #2c3e50;
+.header {
   position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 50px;
-  min-height: 100%;
+  line-height: 50px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+  background-color: #3c8dbc;
+}
+
+/* 左侧样式 */
+.navbar {
+  position: absolute;
   width: 230px;
-  z-index: 2;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
-  -moz-transition: -moz-transform 0.3s ease-in-out, width 0.3s ease-in-out;
-  -o-transition: -o-transform 0.3s ease-in-out, width 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  top: 80px; /* 距离上面50像素 */
+  left: 0px;
+  bottom: 0px;
+  overflow-y: auto; /* 当内容过多时y轴出现滚动条 */
+  overflow-x: hidden;
+  background-color: #2c3e50;
 }
-.content-wrapper {
-  color: black;
-  background-color: rgb(159, 172, 226);
-  height: 90%;
-  overflow: auto;
-  z-index: 1;
+
+/* 主区域 */
+.main {
+  position: absolute;
+  top: 80px;
+  left: 230px;
+  bottom: 0px;
+  right: 0px; /* 距离右边0像素 */
+  padding: 10px;
+  overflow-y: auto; /* 当内容过多时y轴出现滚动条 */
+  overflow-x: auto;
   background-color: rgb(236, 235, 235);
-}
-
-.sidebar {
-  display: block;
-  padding-bottom: 10px;
-}
-.sidebar-menu,
-.sidebar-menu > li.header {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.sidebar-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .tac {
   position: absolute;
   left: 15px;
+}
+
+.title {
+  position: fixed;
+  color: white;
+  top: 18px;
+  left:43%;
+}
+
+.logo {
+  position: fixed;
+  left:3%;
+  width:180px; 
+  height:78px
 }
 </style>
 

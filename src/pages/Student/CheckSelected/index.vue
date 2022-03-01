@@ -65,10 +65,11 @@ export default {
 .teacherdata {
   position: relative;
   top: 0;
-  left: 250px;
-  padding-top: 50px;
   min-height: 90%;
-  width: 1500px;
+  left: 2.5%;
+  right: 2.5%;
+  padding-top: 50px;
+  width: 95%;
   overflow: auto;
 }
 </style>

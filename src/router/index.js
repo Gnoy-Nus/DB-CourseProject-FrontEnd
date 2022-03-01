@@ -17,6 +17,8 @@ import ManageStudent from '@/pages/Teacher/ManageStudent'
 import CheckStudentRequests from '@/pages/Teacher/CheckRequest'
 import TeacherAccount from '@/pages/Teacher/TeacherAccount'
 import TeacherModify from '@/pages/Teacher/TeacherModify'
+
+
 //解决重复访问路由地址报错
 let originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location, resolve, reject) {
