@@ -3,9 +3,7 @@ import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
 //导入fa|jquery|Element-UI库
-import 'font-awesome/css/font-awesome.min.css'
-import 'jquery/dist/jquery.slim'
-import 'jquery/dist/jquery'
+
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
