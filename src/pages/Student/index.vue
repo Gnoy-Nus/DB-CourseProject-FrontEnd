@@ -15,7 +15,6 @@
               color: black;
             "
           >
-          
             <span style="font-weight: bold"> 学生信息</span>
             <div style="line-height: 23px">学号：{{ StuInfo.id }}</div>
             <div style="line-height: 23px">姓名：{{ StuInfo.name }}</div>
@@ -53,24 +52,21 @@
                         <span>操作</span>
                       </template>
                       <el-menu-item-group>
-                        <router-link to="/student/SelectCourse">
-                          <el-menu-item index="1-1"
-                            >查看本学期开设课程</el-menu-item
+                        <router-link to="/student/StudentSelect">
+                          <el-menu-item index="1-1">选择导师</el-menu-item>
+                        </router-link>
+                        <router-link to="/student/StudentCheck">
+                          <el-menu-item index="1-2"
+                            >查看已申请的导师</el-menu-item
                           >
                         </router-link>
-                        <router-link to="/student/CheckSelected">
-                          <el-menu-item index="1-2">查看已选课程</el-menu-item>
-                        </router-link>
-                        <router-link to="/student/CheckScore">
-                          <el-menu-item index="1-3">查看成绩</el-menu-item>
-                        </router-link>
                         <router-link to="/student/StudentModify">
-                          <el-menu-item index="1-4"
+                          <el-menu-item index="1-3"
                             >查看/修改个人信息</el-menu-item
                           >
                         </router-link>
                         <router-link to="/student/StudentAccount">
-                          <el-menu-item index="1-5">账号管理</el-menu-item>
+                          <el-menu-item index="1-4">账号管理</el-menu-item>
                         </router-link>
                       </el-menu-item-group>
                     </el-submenu>
@@ -161,14 +157,14 @@ export default {
   position: fixed;
   color: white;
   top: 18px;
-  left: 43%;
+  left:43%;
 }
 
 .logo {
   position: fixed;
-  left: 3%;
-  width: 180px;
-  height: 78px;
+  left:3%;
+  width:180px; 
+  height:78px
 }
 </style>
 

@@ -10,9 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 //注册全局组件
 import Header from '@/components/Header'
 Vue.component(Header.name,Header);
+
 Vue.use(ElementUI);
-
-
 
 new Vue({
   //注册路由

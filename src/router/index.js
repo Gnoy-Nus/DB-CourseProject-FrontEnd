@@ -9,23 +9,14 @@ import store from '@/store'
 import Login from '@/pages/Login'
 import Student from '@/pages/Student'
 import Teacher from '@/pages/Teacher'
-import SelectCourse from '@/pages/Student/SelectCourse'
-import CheckSelected from '@/pages/Student/CheckSelected'
-import CheckScore from '@/pages/Student/CheckScore'
+import StudentSelect from '@/pages/Student/StudentSelect'
+import StudentCheck from '@/pages/Student/CheckSelected'
 import StudentAccount from '@/pages/Student/StudentAccount'
 import StudentModify from '@/pages/Student/StudentModify'
-import CheckMember from '@/pages/Student/CheckSelected/CheckMember'
-//
-import UpdateScore from '@/pages/Teacher/UpdateScore'
-import ScoreList from '@/pages/Teacher/UpdateScore/ScoreList'
-import CheckClass from '@/pages/Teacher/CheckClass'
+import ManageStudent from '@/pages/Teacher/ManageStudent'
+import CheckStudentRequests from '@/pages/Teacher/CheckRequest'
 import TeacherAccount from '@/pages/Teacher/TeacherAccount'
 import TeacherModify from '@/pages/Teacher/TeacherModify'
-import TeaCheckMember from '@/pages/Teacher/CheckClass/CheckMember'
-//
-import AdminLogin from '@/pages/Admin';
-
-
 
 
 //解决重复访问路由地址报错
@@ -47,34 +38,18 @@ export default new VueRouter({
         }
         ,
         {
-            path: "/adminlogin",
-            component: AdminLogin,
-        }
-        ,
-        {
             path: "/student",
             component: Student,
             children: [
                 {
-                    // path: '/student/SelectCourse',
-                    path: 'SelectCourse',
-                    component: SelectCourse,
-                },
-                {
-                    // path: '/student/CheckSelected',
-                    path: 'CheckSelected',
-                    component: CheckSelected,
-                   children: [
-                       {
-                           path: 'CheckMember',
-                           component:CheckMember,
-                       }
-                   ]
+                    // path: '/student/StudentSelect',
+                    path: 'StudentSelect',
+                    component: StudentSelect,
                 },
                 {
                     // path: '/student/StudentCheck',
-                    path: 'CheckScore',
-                    component: CheckScore,
+                    path: 'StudentCheck',
+                    component: StudentCheck,
                 },
                 {
                     // path: '/student/StudentAccount',
@@ -89,7 +64,7 @@ export default new VueRouter({
             ],
             beforeEnter: (to, from, next) => { // 路由前置守卫
                 // 如果有token且login状态正常，放行
-                if (store.state.user.token && store.state.user.loginType == "s") {
+                if (store.state.user.token&&store.state.user.loginType=="s") {
                     next()
                 } else {
                     //否则跳转至默认页面
@@ -103,26 +78,14 @@ export default new VueRouter({
             component: Teacher,
             children: [
                 {
-                    // path: '/teacher/UpdateScore',
-                    path: 'UpdateScore',
-                    component: UpdateScore,
-                    children:[
-                        {
-                            path:'ScoreList',
-                            component:ScoreList
-                        }
-                    ]
+                    // path: '/teacher/ManageStudent',
+                    path: 'ManageStudent',
+                    component: ManageStudent,
                 },
                 {
-                    // path: '/teacher/CheckClass',
-                    path: 'CheckClass',
-                    component: CheckClass,
-                    children:[
-                        {
-                            path:'CheckMember',
-                            component:TeaCheckMember
-                        }
-                    ]
+                    // path: '/teacher/CheckRequests',
+                    path: 'CheckStudentRequests',
+                    component: CheckStudentRequests,
                 },
                 {
                     // path: '/teacher/TeacherAccount',
@@ -137,7 +100,7 @@ export default new VueRouter({
             ],
             beforeEnter: (to, from, next) => { // 路由前置守卫
                 // 如果有token且login状态正常，放行
-                if (store.state.user.token && store.state.user.loginType == "t") {
+                if (store.state.user.token&&store.state.user.loginType=="t") {
                     next()
                 } else {
                     //否则跳转至默认页面

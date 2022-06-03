@@ -15,9 +15,7 @@
             <span style="font-weight: bold"> 教师信息</span>
             <div style="line-height: 23px">工号：{{ TeaInfo.id }}</div>
             <div style="line-height: 23px">姓名：{{ TeaInfo.name }}</div>
-            <div style="line-height: 23px">性别：{{ TeaInfo.gender }}</div>
             <div style="line-height: 23px">学院：{{ TeaInfo.college }}</div>
-            <div style="line-height: 23px">职称：{{ TeaInfo.title }}</div>
             <br />
             <div style="color: indianred; font-weight: bold; line-height: 23px">
               完成操作后请点击&nbsp;<a
@@ -48,12 +46,12 @@
                         <span>操作</span>
                       </template>
                       <el-menu-item-group>
-                        <router-link to="/teacher/CheckClass">
-                          <el-menu-item index="1-1">查看课程</el-menu-item>
+                        <router-link to="/teacher/ManageStudent">
+                          <el-menu-item index="1-1">管理学生</el-menu-item>
                         </router-link>
-                        <router-link to="/teacher/UpdateScore">
+                        <router-link to="/teacher/CheckStudentRequests">
                           <el-menu-item index="1-2"
-                            >录入成绩</el-menu-item
+                            >查看申请中的学生</el-menu-item
                           >
                         </router-link>
                         <router-link to="/teacher/TeacherModify">

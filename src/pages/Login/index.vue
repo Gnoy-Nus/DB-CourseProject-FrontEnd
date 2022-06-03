@@ -1,41 +1,19 @@
 <template>
   <div class="module">
-    <div class="rtop">
-      <el-switch
-        class="middle"
-        v-model="value"
-        size="large"
-        active-text="开启选课"
-        inactive-text="关闭选课"
-        @click.native.prevent="handle"
-      />
-    </div>
-
     <div class="container">
       <div class="form-box">
         <!-- 教师登录页面 -->
         <div class="register-box hidden">
           <h1>login</h1>
           <input type="text" placeholder="工号" v-model="tea_id" />
-          <input
-            type="password"
-            placeholder="密码"
-            v-model="tea_pwd"
-            @keydown.13="teacherLogin"
-          />
+          <input type="password" placeholder="密码" v-model="tea_pwd" @keydown.13='teacherLogin' />
           <button @click.prevent="teacherLogin">登录</button>
         </div>
         <!-- 学生登录页面 -->
-
         <div class="login-box">
           <h1>login</h1>
           <input type="text" placeholder="学号" v-model="stu_id" />
-          <input
-            type="password"
-            placeholder="密码"
-            v-model="stu_pwd"
-            @keydown.13="studentLogin"
-          />
+          <input type="password" placeholder="密码" v-model="stu_pwd" @keydown.13='studentLogin'/>
           <button @click.prevent="studentLogin">登录</button>
         </div>
       </div>
@@ -57,7 +35,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
@@ -66,41 +43,11 @@ export default {
       stu_pwd: "",
       tea_id: "",
       tea_pwd: "",
-      dialogFormVisible: false,
-      formLabelWidth: "140px",
-      form: {
-        pwd: "",
-      },
-      value: "",
     };
   },
-  async mounted() {
-    await this.$store.dispatch("getSysMode");
-    this.value = this.$store.state.user.sys_mode;
-    console.log(this.value);
-  },
   methods: {
-    async handle() {
-      this.$confirm("此操作将修改状态, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(async () => {
-          await this.$store.dispatch("altSysMode");
-          this.value = this.$store.state.user.sys_mode;
-          this.$message({
-            type: "success",
-            message: "修改成功!",
-          });
-        })
-        .catch(() => {
-          this.value = this.$store.state.user.sys_mode;
-          this.$message({
-            type: "info",
-            message: "已取消",
-          });
-        });
+    enterEvent(){
+      console.log("OK");
     },
     //换成学生的登录页面切换
     LoginS() {
@@ -119,7 +66,6 @@ export default {
       login_box.classList.add("hidden");
       register_box.classList.remove("hidden");
     },
-
     //登录的回调函数
     async studentLogin() {
       try {
@@ -127,13 +73,13 @@ export default {
         const { stu_id, stu_pwd } = this;
         stu_id &&
           stu_pwd &&
-          (await this.$store.dispatch("stuLogin", {
+          (await this.$store.dispatch("userLogin", {
             usr: stu_id,
             pwd: stu_pwd,
+            type: "s",
           }));
         let toPath = "/student";
         this.$router.push(toPath);
-        this.$store.dispatch("getSysMode"); //获取系统状态
       } catch (error) {
         alert(error.message);
       }
@@ -145,48 +91,20 @@ export default {
         const { tea_id, tea_pwd } = this;
         tea_id &&
           tea_pwd &&
-          (await this.$store.dispatch("teaLogin", {
+          (await this.$store.dispatch("userLogin", {
             usr: tea_id,
             pwd: tea_pwd,
+            type: "t",
           }));
         let toPath = "/teacher";
         this.$router.push(toPath);
-        this.$store.dispatch("getSysMode");
       } catch (error) {
         alert(error.message);
-      }
-    },
-    //toAdmin
-    async adminLogin() {
-      if (this.form.pwd == "123456") {
-        try {
-          await this.$store.dispatch("getSysMode");
-          let toPath = "/adminlogin";
-          this.$router.push(toPath);
-        } catch (error) {
-          alert(error.message);
-        }
-      } else {
-        alert("密码错误");
       }
     },
   },
 };
 </script>
-
-
-<style scoped>
-.el-button--text {
-  margin-right: 15px;
-}
-
-.el-input {
-  width: 300px;
-}
-.dialog-footer button:first-child {
-  margin-right: 10px;
-}
-</style>
 
 <style >
 /* 全局样式 */
@@ -219,14 +137,6 @@ export default {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   /* 相对定位 */
   position: relative;
-}
-.rtop {
-  position: absolute;
-  top: 5%;
-  right: 10%;
-  height: 5vh;
-  background-color: rgb(212, 27, 27) f;
-  box-shadow: 5px 5px 5px rgba(191, 16, 16, 0.1);
 }
 .form-box {
   /* 绝对定位 */

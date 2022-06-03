@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <img class="logo" src="./img/logo-white.png" alt="" />
-    <h1 class="title">统一教务管理系统</h1>
+    <h1 class="title">导师学生双向选择系统</h1>
   </div>
 </template>
 
