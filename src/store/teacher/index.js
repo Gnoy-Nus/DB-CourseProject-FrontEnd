@@ -2,18 +2,17 @@
 
 import {
     reqTeaInfo,
-    changeTeacherAccount,
-    modTeaInfo,
-    checkApplyingStudents,
-    manageApplyingStudents,
-    checkOwnedStudents
+    reqClassInfo,
+    reqClassMember,
+    uploadScore
 } from "@/api";
 
 //登录与注册的模块
 const state = {
     teaInfo: {},
-    applyList: [],
-    ownStudentList:[]
+    class_list: [],
+    class_member_list:[],
+    query_id:''
 };
 
 //mutations:修改state的唯一手段
@@ -21,11 +20,14 @@ const mutations = {
     TEA_INFO(state, result) {
         state.teaInfo = result;
     },
-    APPLY_TLIST(state, result) {
-        state.applyList = result;
+    CLASS_LIST(state, result) {
+        state.class_list = result;
     },
-    OWNED_TLIST(state, result) {
-        state.ownStudentList = result;
+    CLASS_MEMBER_LIST(state, result) {
+        state.class_member_list = result;
+    },
+    QUERY_ID(state, result) {
+        state.query_id = result;
     },
 };
 
@@ -33,73 +35,50 @@ const actions = {
     //获取用户信息
     async getTeaInfo({ commit }) {
         let result = await reqTeaInfo();
-        if (result.status == 1) {
-            commit("TEA_INFO", result.data);
+        if (result.code == 1) {
+            commit("TEA_INFO", result.info);
             console.log(result);
             return 'ok';
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
-    //更改账户密码
-    async T_changeAccountPwd({ commit }, data) {
+   
+    //获取上课班级列表
+    async reqClassInfo({ commit }, data) {
         console.log(data);
-        let result = await changeTeacherAccount(data);
+        let result = await reqClassInfo(data);
         console.log(result);
-        if (result.status == 1) {
-            //用户已经登录成功且获取到token
-            console.log("ok");
+        if (result.code == 1) {
+            commit("CLASS_LIST", result.info);
             return "ok";
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
-    //修改用户信息
-    async changeTeaInfo({ commit }, data) {
+    
+    //获取班级学生列表
+    async reqClassMember({ commit }, data) {
         console.log(data);
-        let result = await modTeaInfo(data);
+        let result = await reqClassMember(data);
         console.log(result);
-        if (result.status == 1) {
-            console.log(result);
-            return 'ok';
-        } else {
-            return Promise.reject(new Error(result.message));
-        }
-    },
-    //获取已申请的学生列表
-    async getApplyStudentList({ commit }) {
-        let result = await checkApplyingStudents();
-        console.log(result);
-        if (result.status == 1) {
-            //用户已经登录成功且获取到token
-            commit("APPLY_TLIST", result.data);
+        if (result.code == 1) {
+            commit("CLASS_MEMBER_LIST", result.info);
             return "ok";
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
-    //管理学生提交的申请
-    async manageStuApply({ commit }, data) {
+    //上传分数
+    async uploadScore({ commit }, data) {
         console.log(data);
-        let result = await manageApplyingStudents(data);
+        let result = await uploadScore(data);
         console.log(result);
-        if (result.status == 1) {
-            console.log(result);
-            return 'ok';
-        } else {
-            return Promise.reject(new Error(result.message));
-        }
-    },
-    //获取已在门下的学生列表
-    async getOwnedStudentList({ commit }) {
-        let result = await checkOwnedStudents();
-        console.log(result);
-        if (result.status == 1) {
-            //用户已经登录成功且获取到token
-            commit("OWNED_TLIST", result.data);
+        if (result.code == 1) {
             return "ok";
+            alert("success");
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
 };
@@ -111,12 +90,12 @@ const getters = {
     TeaInfo(state) {
         return state.teaInfo || {};
     },
-    APPLYLIST(state) {
-        return state.applyList || [];
+    CLASSLIST(state) {
+        return state.class_list || [];
     },
-    OwnStudentList(state){
-        return state.ownStudentList||[];
-    }
+    CLASSMEMEBERLIST(state) {
+        return state.class_member_list || [];
+    },
 };
 
 export default {

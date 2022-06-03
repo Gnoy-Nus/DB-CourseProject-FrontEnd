@@ -1,6 +1,6 @@
 const proxyObj = {}
 proxyObj['/'] = {
-    target: 'http://121.37.152.165',
+    target: 'http://124.222.25.150:9090',
     changeOrigin: true,
     pathRewrite: {
         '^/': ''

@@ -2,20 +2,23 @@
 
 import {
     reqStuInfo,
-    selectTutorKeyword,
+    reqCourseInfo,
+    reqStuCourse,
+    reqStuScore,
+    delCourse,
+    putCourse,
+
     changeStudentAccount,
-    checkApplyingTutors,
     modStuInfo,
-    submitApply,
-    cancelApply
 } from "@/api";
 
 //登录与注册的模块
 const state = {
     stuInfo: {},
-    teacherList: [],
-    selectedTeacherList: [],
-    pageLength: 1
+    courseList: [],
+    selectedCourseList: [],
+    pageLength: 1,
+    grade_list: [],
 };
 
 //mutations:修改state的唯一手段
@@ -23,67 +26,106 @@ const mutations = {
     STU_INFO(state, result) {
         state.stuInfo = result;
     },
-    TEACHER_LIST(state, result) {
-        state.teacherList = result;
+    COURSE_LIST(state, result) {
+        state.courseList = result;
     },
-    SELECTED_TLIST(state, result) {
-        state.selectedTeacherList = result;
+    SELECTED_CLIST(state, result) {
+        state.selectedCourseList = result;
     },
     PAGE_LENGTH(state, result) {
         state.pageLength = result;
-    }
+    },
+    GRADE_LIST(state, result) {
+        state.grade_list = result;
+    },
 };
 
 const actions = {
     //获取用户信息
     async getStuInfo({ commit }) {
         let result = await reqStuInfo();
-        if (result.status == 1) {
-            commit("STU_INFO", result.data);
-            console.log(result);
+        console.log(result);
+        if (result.code == 1) {
+            commit("STU_INFO", result.info);
             return 'ok';
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
+    //获取开课表
+    async getCourseList({ commit }, data) {
+        console.log(data);
+        let result = await reqCourseInfo(data);
+        console.log(result);
+        if (result.code == 1) {
+            commit("COURSE_LIST", result.info);
+            //commit("PAGE_LENGTH",result.length);
+            return "ok";
+        } else {
+            return Promise.reject(new Error(result.msg));
+        }
+    },
+    //获取已申请的课程列表
+    async getStuCourseList({ commit }, data) {
+        console.log(data);
+        let result = await reqStuCourse(data);
+        console.log(result);
+        if (result.code == 1) {
+            commit("SELECTED_CLIST", result.info);
+            return "ok";
+        } else {
+            return Promise.reject(new Error(result.msg));
+        }
+    },
+    //获取学生成绩
+    async getStuScore({ commit }, data) {
+        console.log(data);
+        let result = await reqStuScore(data);
+        console.log(result);
+        if (result.code == 1) {
+            commit("GRADE_LIST", result.info);
+            return "ok";
+        } else {
+            return Promise.reject(new Error(result.msg));
+        }
+    },
+    //删除选课
+    async deleteCourse({ commit }, data) {
+        console.log(data);
+        let result = await delCourse(data);
+        console.log(result);
+        if (result.code == 1) {
+            return 'ok';
+        } else {
+            return Promise.reject(new Error(result.msg));
+        }
+    },
+    //递交导师申请
+    async putCourse({ commit }, data) {
+        console.log(data);
+        let result = await putCourse(data);
+        console.log(result);
+        if (result.code == 1) {
+            return 'ok';
+        } else {
+            return Promise.reject(new Error(result.msg));
+        }
+    },
+
     //修改用户信息
     async changeStuInfo({ commit }, data) {
         console.log(data);
         let result = await modStuInfo(data);
         console.log(result);
-        if (result.status == 1) {
+        if (result.code == 1) {
             console.log(result);
             return 'ok';
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
-    //递交导师申请
-    async submitTutorApply({ commit }, data) {
-        console.log(data);
-        let result = await submitApply(data);
-        console.log(result);
-        if (result.status == 1) {
-            console.log(result);
-            return 'ok';
-        } else {
-            return Promise.reject(new Error(result.message));
-        }
-    },
-    //获取导师信息表
-    async getTeacherList({ commit }, data) {
-        console.log(data);
-        let result = await selectTutorKeyword(data);
-        console.log(result);
-        if (result.status == 1) {
-            //用户已经登录成功且获取到token
-            commit("TEACHER_LIST", result.data);
-            commit("PAGE_LENGTH",result.length);
-            return "ok";
-        } else {
-            return Promise.reject(new Error(result.message));
-        }
-    },
+
+
     //更改账户密码
     async changeAccountPwd({ commit }, data) {
         console.log(data);
@@ -94,33 +136,11 @@ const actions = {
             console.log("ok");
             return "ok";
         } else {
-            return Promise.reject(new Error(result.message));
+            return Promise.reject(new Error(result.msg));
         }
     },
-    //获取已申请的导师列表
-    async getApplyTeacherList({ commit }) {
-        let result = await checkApplyingTutors();
-        console.log(result);
-        if (result.status == 1) {
-            //用户已经登录成功且获取到token
-            commit("SELECTED_TLIST", result.data);
-            return "ok";
-        } else {
-            return Promise.reject(new Error(result.message));
-        }
-    },
-    //撤销申请
-    async cancelTutorApply({ commit }, data) {
-        console.log(data);
-        let result = await cancelApply(data);
-        console.log(result);
-        if (result.status == 1) {
-            console.log(result);
-            return 'ok';
-        } else {
-            return Promise.reject(new Error(result.message));
-        }
-    },
+
+
 };
 
 
@@ -130,14 +150,17 @@ const getters = {
     StuInfo(state) {
         return state.stuInfo || {};
     },
-    TeacherList(state) {
-        return state.teacherList || [];
+    CList(state) {
+        return state.courseList || [];
     },
-    SelectedTeacherList(state) {
-        return state.selectedTeacherList || [];
+    SelectedCourseList(state) {
+        return state.selectedCourseList || [];
     },
     PageLength(state) {
         return state.pageLength;
+    },
+    Grade_List(state) {
+        return state.grade_list;
     }
 };
 
